@@ -1,0 +1,38 @@
+$cardinal-orange: #FF9100;
+$boston-orange: #FF6D00;
+$forgames-orange:#F36104;
+$tenessee-orange: #f88200;
+$arsenic-grey: #444;
+$dark-gray-blue: #41555e;
+
+$fgs-orange: (A100: $forgames-orange,
+A200: $forgames-orange,
+A400: $boston-orange,
+A700: $boston-orange,
+100: #FFD180,
+200: #FFAB40,
+300: #FF9100,
+400: $boston-orange,
+500: $boston-orange,
+600: $boston-orange,
+700: $boston-orange,
+800: $boston-orange,
+900: $boston-orange,
+contrast: (
+  50: white,
+  100: white,
+  200: white,
+  300: white,
+  400: white,
+  500: white,
+  600: white,
+  700: white,
+  800: white,
+  900: white,
+  A100: white,
+  A200: white,
+  A400: white,
+  A700: white,
+))
+
+

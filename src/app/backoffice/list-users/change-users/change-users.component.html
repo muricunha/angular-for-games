@@ -1,0 +1,38 @@
+  <header>
+  <h1>Alterar Usuário</h1>
+  </header>
+  <hr>
+  <!-- nao esquecer do formControlName no inputs -->
+  <form action="" [formGroup]="backofficeForm">
+    <section class="section-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" maxlength="25">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>E-mail</mat-label>
+        <strong>{{resultListUsers.email}}</strong>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="change-form-field">
+        <mat-label>CPF</mat-label>
+        <input matInput formControlName="codPerson" mask="000.000.000-00">
+        <mat-error *ngIf="backofficeForm.invalid">Insira um CPF válido</mat-error>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput formControlName="password" mask="0*" maxlength="8">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="change-form-field">
+        <mat-label>Confirmar Senha</mat-label>
+        <input type="password" matInput formControlName="confirmPassword" mask="0*" maxlength="8">
+      </mat-form-field>
+    </section>
+    <mat-dialog-actions align="end">
+      <button mat-flat-button mat-dialog-close>Cancelar</button>
+      <button mat-button color="primary">Salvar Alterações</button>
+    </mat-dialog-actions>
+  </form>

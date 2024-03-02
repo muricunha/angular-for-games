@@ -1,4 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import '/node_modules/@angular/material/theming';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import '../src/forgames-theme.scss';
+
+@include mat-core();
+
+$for-ui-primary: mat-palette($fgs-orange, A200);
+$for-ui-accent: mat-palette($fgs-orange, A100);
+$for-ui-warn: mat-palette($fgs-orange, A400);
+$for-ui-theme: mat-light-theme($for-ui-primary, $for-ui-accent, $for-ui-warn);
+
+@include angular-material-theme($for-ui-theme);
+
+html, body {
+  height: 100%;
+  width: 100%;
+  color: $forgames-orange;
+  font-family: 'inter', sans-serif;
+}

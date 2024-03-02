@@ -1,0 +1,45 @@
+*{
+  font-family: 'inter', sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  height: 100vh;
+  margin: 0px;
+}
+
+.container{
+  height: 200px;
+  background-color: #143E56;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.image-footer{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.description-social{
+text-align: center;
+margin: 0 auto;
+}
+
+.description-social img{
+  width: 40px;
+  height: 40px;
+  margin: 0px 10px;
+}
+
+.description-social p{
+  color: white;
+  font-size: 16px;
+  margin: 10px 0px 0px 0px;
+}
+
