@@ -15,4 +15,15 @@ export class ForgamesService {
   list(): Observable<Backoffice[]>{
     return this.http.get<Backoffice[]>(this.API);
   }
+
+  edit(user: Backoffice): Observable<Backoffice>{
+    const url = `${this.API}/${user.id}`
+    return this.http.put<Backoffice>(url, user)
+  }
+
+  buscarPorId(id: number): Observable<Backoffice>{
+    const url = `${this.API}/${id}`
+    return this.http.get<Backoffice>(url)
+
+  }
 }

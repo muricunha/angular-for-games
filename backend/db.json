@@ -4,20 +4,22 @@
       "id": 1,
       "nome": "João da Silva",
       "email": "joao.pedefeijao20@gmail.com",
+      "cpf": "13302402989",
       "status": "Ativo"
     },
     {
       "id": 2,
       "nome": "maria da Silva",
       "email": "mariadasilva@gmail.com",
+      "cpf": "13302402989",
       "status": "Inativo"
     },
     {
       "id": 3,
       "nome": "Carlos Eduardo",
       "email": "carlosedu.lol@gmail.com",
+      "cpf": "13302402989",
       "status": "Ativo"
     }
   ]
-
 }

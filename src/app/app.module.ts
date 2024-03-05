@@ -11,20 +11,22 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { ChangeUsersComponent } from './backoffice/list-users/change-users/change-users.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-alter.component';
 @NgModule({
   declarations: [
     AppComponent,
     UserLoginComponent,
     ListUsersComponent,
     ChangeUsersComponent,
-    FooterComponent
+    FooterComponent,
+    ModalAlterComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +43,10 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     MatDialogModule,
     ReactiveFormsModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(),
+  MatSlideToggle],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
