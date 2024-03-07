@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { InjectionToken, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { ChangeUsersComponent } from './backoffice/list-users/change-users/change-users.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-alter.component';
+import { CommonModule } from '@angular/common';
+import { CreateUserComponent } from './backoffice/create-user/create-user.component';
+import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.component';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +30,9 @@ import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-a
     ListUsersComponent,
     ChangeUsersComponent,
     FooterComponent,
-    ModalAlterComponent
+    ModalAlterComponent,
+    CreateUserComponent,
+    ChooseScreenComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,9 +50,13 @@ import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-a
     ReactiveFormsModule,
     NgxMaskDirective,
     NgxMaskPipe,
+    CommonModule,
+    MatSelectModule
   ],
   providers: [provideNgxMask(),
-  MatSlideToggle],
+  MatSlideToggle,
+  ListUsersComponent,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

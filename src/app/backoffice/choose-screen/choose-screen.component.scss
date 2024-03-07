@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: calc(100vh - 20px); /* Ajusta a altura para ocupar 100% da tela menos uma pequena margem superior */
+  overflow: hidden; /* Remove a barra de rolagem vertical */
+
+}
+
+.logo {
+  margin-bottom: 10px;
+}
+
+.choose {
+  width: 400px; /* Ajusta a largura conforme necessário */
+  height: 300px; /* Ajusta a altura conforme necessário */
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+button {
+  margin-bottom: 20px;
+  padding: 25px;
+}

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginModel } from '../backoffice';
 
 @Component({
   selector: 'app-user-login',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class UserLoginComponent {
 
+
+    public submit(): void {
+
+    }
+
+
+  public createForm = new FormGroup({
+    usuario: new FormControl('', [Validators.required, Validators.email]),
+    senha: new FormControl('', [Validators.required])
+  })
 }

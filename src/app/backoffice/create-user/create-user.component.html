@@ -1,12 +1,19 @@
- <header>
-  <h1>Alterar Usuário</h1>
-  </header>
+<header>
+  <h1>Cadastrar Usuário</h1>
+</header>
   <hr>
-  <form action="" [formGroup]="backofficeForm">
+<form [formGroup]="createForm">
     <section class="section-field">
       <mat-form-field appearance="outline">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="nome" maxlength="25">
+      </mat-form-field>
+
+      <mat-form-field class="change-form-field" >
+        <mat-label>Grupo</mat-label>
+        <mat-select formControlName="grupo">
+          <mat-option *ngFor="let grupo of grupo" [value]="grupo.value">{{grupo.viewValue}}</mat-option>
+        </mat-select>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
@@ -17,15 +24,12 @@
       <mat-form-field appearance="outline" class="change-form-field">
         <mat-label>CPF</mat-label>
         <input matInput formControlName="codPerson" mask="000.000.000-00">
-        <mat-error *ngIf="backofficeForm.get('codPerson')?.invalid && backofficeForm.get('codPerson')?.value === ''">Este campo é obrigatório</mat-error>
-        <mat-error *ngIf="backofficeForm.get('codPerson')?.hasError('invalidCpf')">Insira um CPF válido</mat-error>
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
         <mat-label>Senha</mat-label>
         <input type="password" matInput formControlName="password" mask="0*" maxlength="8">
       </mat-form-field>
-
       <mat-form-field appearance="outline" class="change-form-field">
         <mat-label>Confirmar Senha</mat-label>
         <input type="password" matInput formControlName="confirmPassword" mask="0*" maxlength="8">
@@ -33,6 +37,6 @@
     </section>
     <mat-dialog-actions align="end">
       <button mat-flat-button mat-dialog-close>Cancelar</button>
-      <button mat-button color="primary" (click)="editUsers()" [disabled]="backofficeForm.invalid">Salvar Alterações</button>
+      <button mat-button color="primary" (click)="sendCreate()">Criar</button>
     </mat-dialog-actions>
-  </form>
+</form>

@@ -1,1 +1,18 @@
-<p>user-login works!</p>
+<div class="header">
+  <img src="../../../assets/logoFourGames.png" alt="logo four games" width="150px" height="150px" class="logo">
+  <form class="login-form mat-elevation-z4" [formGroup]="createForm">
+  <h1>Login</h1>
+    <div class="description">
+        <mat-form-field appearance="outline" class="usuario">
+          <mat-label>Usuário</mat-label>
+          <input matInput placeholder="Digite seu usuário" formControlName="usuario">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="senha">
+          <mat-label>Senha</mat-label>
+          <input matInput placeholder="Digite sua senha" formControlName="senha">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="submit()">Login</button>
+    </div>
+  </form>
+</div>

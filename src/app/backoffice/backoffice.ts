@@ -5,3 +5,8 @@ export interface Backoffice {
   cpf?: number,
   status: string,
 }
+
+export interface LoginModel{
+  email: string,
+  senha: number
+}
