@@ -5,6 +5,8 @@ import { Backoffice } from '../../backoffice';
 import { ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { __values } from 'tslib';
+import * as bcrypt from 'bcryptjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-change-users',
@@ -20,26 +22,34 @@ export class ChangeUsersComponent {
     private service: ForgamesService,
     private route: ActivatedRoute,
     private dialogRef: MatDialogRef<ChangeUsersComponent>,
+    public snackBar: MatSnackBar,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Backoffice,
     ) {}
 
     ngOnInit(): void {
-      const id = this.route.snapshot.paramMap.get('id');
-
-
     }
     public editUsers(): void {
+
+      const senha = this.backofficeForm.get('password')?.value;
+
+      const hashedSenha = bcrypt.hashSync(senha, 10);
       const request: Backoffice = {
         id: this.data.id,
         nome: this.backofficeForm.get('nome')?.value,
         email: this.backofficeForm.get('email')?.value,
         cpf: this.backofficeForm.get('codPerson')?.value,
-        status: this.data.status
+        status: this.data.status,
+        senha: hashedSenha,
       }
       this.service.edit(request).subscribe(() => {
         this.dialogRef.close();
+        this.openSnackBar();
         })
     }
+
+    public openSnackBar(): void {
+      this.snackBar.open('alteração feita com sucesso!', 'Fechar')
+      }
 
     private get initialForm(): FormGroup {
       return this.backofficeForm = this.formBuilder.group({

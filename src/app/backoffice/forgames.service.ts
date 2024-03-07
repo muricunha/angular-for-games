@@ -6,7 +6,6 @@ import { ModalAnswer, ModalOptions } from '../models/alert-confirm.model';
 import { ModalAlterComponent } from './list-users/modal-alter/modal-alter.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCreate } from './backoffice-create';
-
 @Injectable({
   providedIn: 'root',
 })

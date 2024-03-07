@@ -4,8 +4,9 @@
       "id": 1,
       "nome": "joau",
       "email": "joao@gmail.com",
-      "cpf": 12020220000,
-      "status": ""
+      "cpf": 29393828293,
+      "status": "",
+      "senha": "$2a$10$.hN8DWVnr2K5iSXLNaSasuuBqBYQA8VQNXbA21I/p880LnXNKoBlu"
     },
     {
       "id": 2,
@@ -15,27 +16,19 @@
       "status": "Inativo"
     },
     {
-      "id": 3,
-      "nome": "Carlos Eduardo",
-      "email": "carlosedu.lol@gmail.com",
-      "cpf": "13302402989",
-      "status": "Ativo"
+      "nome": "lilo",
+      "email": "lilo@gmail.com",
+      "grupo": "Administrador",
+      "cpf": "11111111111",
+      "senha": "$2a$10$Y4Jy3vWE00SJy6WBLz2i6ulnjK2QIXeWm5W1A9tlRGXoemVM2KcSS",
+      "id": 3
     },
     {
+      "id": 4,
       "nome": "murilo",
-      "email": "murilo@gmail.com",
-      "grupo": "",
-      "cpf": "11111111111",
-      "senha": "11111111",
-      "id": 4
-    },
-    {
-      "nome": "carlos",
-      "email": "sdsdsdsdsdsds",
-      "grupo": "estoquista",
-      "cpf": "11111111111",
-      "senha": "11111111",
-      "id": 5
+      "email": "john@gmail.com",
+      "cpf": "33333333333",
+      "senha": "$2a$10$QmZb5VmHe2HhDLczDUII6./7eZTTiRM/63zV7fnD4Sy2Ju89X0SKC"
     }
   ]
 }

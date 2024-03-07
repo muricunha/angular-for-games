@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { CreateUserComponent } from './backoffice/create-user/create-user.component';
 import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.component';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import {MatSelectModule} from '@angular/material/select';
     NgxMaskDirective,
     NgxMaskPipe,
     CommonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,

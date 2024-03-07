@@ -31,6 +31,7 @@
         <input type="password" matInput formControlName="confirmPassword" mask="0*" maxlength="8">
       </mat-form-field>
     </section>
+    <mat-error *ngIf="backofficeForm.get('password')?.value !== backofficeForm.get('confirmPassword')?.value">As senhas não são iguais</mat-error>
     <mat-dialog-actions align="end">
       <button mat-flat-button mat-dialog-close>Cancelar</button>
       <button mat-button color="primary" (click)="editUsers()" [disabled]="backofficeForm.invalid">Salvar Alterações</button>
