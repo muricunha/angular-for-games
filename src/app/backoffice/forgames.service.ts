@@ -11,17 +11,17 @@ import { ModalCreate } from './backoffice-create';
   providedIn: 'root',
 })
 export class ForgamesService {
-  private readonly API = 'http://localhost:3000/perfil';
+  private readonly API = 'http://localhost:8081';
   constructor(private http: HttpClient, private readonly dialog: MatDialog) {}
 
   // para tela de editar
   list(): Observable<Backoffice[]> {
-    return this.http.get<Backoffice[]>(this.API);
+    return this.http.get<Backoffice[]>(`${this.API}/colaborador/listar`);
   }
 
   edit(user: Backoffice): Observable<Backoffice> {
-    const url = `${this.API}/${user.id}`;
-    return this.http.put<Backoffice>(url, user);
+    const url = `${this.API}/colaborador/alterar`;
+    return this.http.post<Backoffice>(url, user);
   }
 
   buscarPorId(id: number): Observable<Backoffice> {
@@ -44,7 +44,7 @@ export class ForgamesService {
 
   // para tela de cadastrar
   public cadastro(request: ModalCreate): Observable<ModalCreate> {
-    const url = `${this.API}`;
+    const url = `${this.API}/colaborador/salvar`;
     return this.http.post<ModalCreate>(url, request)
   }
 }
