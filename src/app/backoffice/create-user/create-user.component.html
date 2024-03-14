@@ -35,8 +35,9 @@
         <input type="password" matInput formControlName="confirmPassword" mask="0*" maxlength="8">
       </mat-form-field>
     </section>
+    <mat-error *ngIf="createForm.get('password')?.value !== createForm.get('confirmPassword')?.value">As senhas não são iguais</mat-error>
     <mat-dialog-actions align="end">
       <button mat-flat-button mat-dialog-close>Cancelar</button>
-      <button mat-button color="primary" (click)="sendCreate()">Criar</button>
+      <button mat-button color="primary" (click)="sendCreate()" [disabled]="createForm.invalid">Criar</button>
     </mat-dialog-actions>
 </form>

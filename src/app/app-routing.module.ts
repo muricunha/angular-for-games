@@ -11,7 +11,7 @@ import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'escolhertela',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
