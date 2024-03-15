@@ -5,7 +5,6 @@ import { Backoffice } from '../../backoffice';
 import { ActivatedRoute } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { __values } from 'tslib';
-import * as bcrypt from 'bcryptjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -32,14 +31,13 @@ export class ChangeUsersComponent {
 
       const senha = this.backofficeForm.get('password')?.value;
 
-      const hashedSenha = bcrypt.hashSync(senha, 10);
       const request: Backoffice = {
         id: this.data.id,
         nome: this.backofficeForm.get('nome')?.value,
         email: this.backofficeForm.get('email')?.value,
         cpf: this.backofficeForm.get('codPerson')?.value,
         status: this.data.status,
-        senha: hashedSenha,
+        senha: this.backofficeForm.get('password')?.value,
       }
       this.service.edit(request).subscribe(() => {
         this.dialogRef.close();

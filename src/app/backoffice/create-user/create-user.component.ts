@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ForgamesService } from '../forgames.service';
 import { ModalCreate } from '../backoffice-create';
-import * as bcrypt from 'bcryptjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 interface Grupo {
@@ -27,7 +26,7 @@ export class CreateUserComponent {
   public sendCreate(): void {
       const senha = this.createForm.get('password')?.value ?? '';
 
-      const hashedSenha = bcrypt.hashSync(senha, 10);
+      const hashedSenha = btoa(senha);
 
       const request: ModalCreate = {
         nome: this.createForm.get('nome')?.value ?? '',
@@ -36,11 +35,12 @@ export class CreateUserComponent {
         cpf: this.createForm.get('codPerson')?.value ?? '',
         senha: hashedSenha,
       }
-      this.service.cadastro(request).subscribe((r)=> {
-        console.log(r);
+
+      console.log(hashedSenha);
+
+      this.service.cadastro(request).subscribe(()=> {
         this.dialogRef.close();
         this.openSnackBar();
-
       })
 }
 
