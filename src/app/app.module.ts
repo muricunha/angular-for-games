@@ -23,6 +23,7 @@ import { CreateUserComponent } from './backoffice/create-user/create-user.compon
 import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.component';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +34,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     ModalAlterComponent,
     CreateUserComponent,
     ChooseScreenComponent,
+    CreateProductComponent,
   ],
   imports: [
     BrowserModule,
