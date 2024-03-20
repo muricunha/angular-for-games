@@ -1,0 +1,16 @@
+<header>
+    <img src="../../../assets/logoFourGames.png" alt="logo four games" width="150px" height="150px">
+    <div class="header-title">
+      <h1>Lista de Produtos</h1>
+    </div>
+  </header>
+<form action="" [formGroup]="listProduct">
+  <div class="flex-container">
+    <mat-form-field class="input-container" appearance="outline">
+      <mat-label>Produto</mat-label>
+      <input matInput placeholder="Digite o nome do produto" formControlName="nome">
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="button">Pesquisar</button>
+    <button mat-stroked-button color="primary" class="button" (click)="openDialogCreate()">Criar Produto</button>
+  </div>
+</form>

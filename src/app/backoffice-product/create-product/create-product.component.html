@@ -1,1 +1,19 @@
-<p>create-product works!</p>
+<header>
+    <h1>Cadastrar Produto</h1>
+</header>
+<hr>
+<form [formGroup]="createForm">
+    <section class="section-field">
+      <mat-form-field appearance="outline">
+        <mat-label>Produto</mat-label>
+        <input matInput formControlName="produto" maxlength="50">
+      </mat-form-field>
+    </section>
+    <section class="section-field">
+        <mat-form-field appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <input matInput formControlName="description" maxlength="500">
+        </mat-form-field>
+      </section>
+
+</form>

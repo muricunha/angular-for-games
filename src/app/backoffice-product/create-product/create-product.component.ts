@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-create-product',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class CreateProductComponent {
 
+
+  public createForm = new FormGroup({
+    nome: new FormControl('')
+  })
 }

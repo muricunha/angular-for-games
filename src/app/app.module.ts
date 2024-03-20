@@ -24,6 +24,7 @@ import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
+import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { CreateProductComponent } from './backoffice-product/create-product/crea
     CreateUserComponent,
     ChooseScreenComponent,
     CreateProductComponent,
+    ListProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { CreateProductComponent } from './backoffice-product/create-product/crea
     NgxMaskPipe,
     CommonModule,
     MatSelectModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,

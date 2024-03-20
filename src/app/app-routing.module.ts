@@ -6,6 +6,8 @@ import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-a
 import { CreateUserComponent } from './backoffice/create-user/create-user.component';
 import { UserLoginComponent } from './backoffice/user-login/user-login.component';
 import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.component';
+import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
+import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
 
 
 const routes: Routes = [
@@ -31,8 +33,8 @@ const routes: Routes = [
     component: ChangeUsersComponent,
   },
   {
-    path: 'criarUsuarios',
-    component: CreateUserComponent,
+    path: 'listarProduto',
+    component: ListProductComponent,
   },
 ];
 
