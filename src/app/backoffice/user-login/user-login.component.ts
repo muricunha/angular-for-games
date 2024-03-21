@@ -4,7 +4,7 @@ import * as CryptoJS from 'crypto-js';
 import {LoginModel} from "../backoffice";
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {LoginService} from './login.service';
-import {Route, Router} from '@angular/router';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -38,8 +38,11 @@ export class UserLoginComponent {
     }
     this.loginService.logar(request).subscribe((response) => {
         if (response.status === 200) {
-          debugger;
-          this.router.navigate(['/escolhertela'])
+          sessionStorage.setItem("usuarioLogado", JSON.stringify({
+            id: response.body?.id,
+            grupo: response.body?.grupo
+          }));
+          this.router.navigate(['/escolhertela']);
         }
       },
       error => {

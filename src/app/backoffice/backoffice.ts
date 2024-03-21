@@ -14,6 +14,6 @@ export interface LoginModel {
 
 export interface LoginView {
   id: number;
-  gruppo: string;
+  grupo: string;
 }
 
