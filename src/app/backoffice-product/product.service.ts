@@ -13,7 +13,7 @@ export class ProductService {
 
   editProduto(user: Product): Observable<Product> {
     const url = `${this.API}/produto/alterar`;
-    return this.http.put<Product>(url, user);
+    return this.http.post<Product>(url, user);
   }
 
   listProduct(): Observable<Product[]> {

@@ -15,6 +15,12 @@
   </div>
 </form>
 <table mat-table class="mat-elevation-z8" [dataSource]="dataSourceList" *ngIf="dataSourceList.data.length > 0">
+
+  <ng-container matColumnDef="id" [class.hidden]="true">
+    <th mat-header-cell class="custom-title" *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
   <ng-container matColumnDef="codigoProduto">
     <th mat-header-cell class="custom-title" *matHeaderCellDef> CodProduto </th>
     <td mat-cell *matCellDef="let element"> {{element.codigoProduto}} </td>

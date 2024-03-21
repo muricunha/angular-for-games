@@ -35,7 +35,7 @@ const routes: Routes = [
   {
     path: 'listarProduto',
     component: ListProductComponent,
-  },
+  }
 ];
 
 @NgModule({

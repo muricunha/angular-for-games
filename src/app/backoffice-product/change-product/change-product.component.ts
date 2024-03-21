@@ -16,15 +16,15 @@ interface Avaliation {
 })
 export class ChangeProductComponent {
   star: Avaliation[] = [
-    {value: '0,5', viewValue: '0,5'},
+    {value: '0.5', viewValue: '0.5'},
     {value: '1', viewValue: '1'},
-    {value: '1,5', viewValue: '1,5'},
+    {value: '1.5', viewValue: '1.5'},
     {value: '2', viewValue: '2'},
-    {value: '2,5', viewValue: '2,5'},
+    {value: '2.5', viewValue: '2.5'},
     {value: '3', viewValue: '3'},
-    {value: '3,5', viewValue: '3,5'},
+    {value: '3.5', viewValue: '3.5'},
     {value: '4', viewValue: '4'},
-    {value: '4,5', viewValue: '4,5'},
+    {value: '4.5', viewValue: '4.5'},
     {value: '5', viewValue: '5'},
   ];
   public isChecked: boolean = false;
@@ -40,6 +40,7 @@ export class ChangeProductComponent {
 
     public changeProduct(){
       const request: Product = {
+        id: this.data.id,
         codigoProduto: this.productForm.get('codProduto')?.value,
         nome: this.productForm.get('produto')?.value,
         avaliacao: this.productForm.get('avaliacao')?.value,
@@ -47,6 +48,7 @@ export class ChangeProductComponent {
         preco: this.productForm.get('preco')?.value,
         qtdEstoque: this.productForm.get('estoque')?.value,
       }
+      debugger;
       this.serviceProduct.editProduto(request).subscribe((r)=> {
         console.log(request);
         this.dialogRef.close();
