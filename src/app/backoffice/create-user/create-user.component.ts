@@ -4,7 +4,7 @@ import {ForgamesService} from '../forgames.service';
 import {ModalCreate} from '../backoffice-create';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import * as CryptoJS from 'crypto-js';
-import {MatDialog, MatDialogRef} from '@angular/material/dialog';
+import {MatDialogRef} from '@angular/material/dialog';
 
 interface Grupo {
   value: string;
@@ -31,7 +31,7 @@ export class CreateUserComponent {
               private dialogRef: MatDialogRef<CreateUserComponent>) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.createForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       nome: new FormControl('', [Validators.required]),
@@ -44,8 +44,9 @@ export class CreateUserComponent {
 
   public sendCreate(): void {
 
-    // const senha = this.createForm.get('senha')?.value;
-    // const encriptSenha = CryptoJS.SHA256(senha).toString()
+    const senha = this.createForm.get('password')?.value;
+
+    let encriptSenha = CryptoJS.SHA256(senha).toString();
 
     if (this.isCpfValid) {
       const request: ModalCreate = {
@@ -53,10 +54,9 @@ export class CreateUserComponent {
         email: this.createForm.get('email')?.value,
         grupo: this.createForm.get('grupo')?.value,
         cpf: this.createForm.get('codPerson')?.value,
-        senha: this.createForm.get('password')?.value,
+        senha: encriptSenha,
       }
-      this.service.cadastro(request).subscribe((r)=> {
-        console.log(request);
+      this.service.cadastro(request).subscribe((r) => {
         this.dialogRef.close();
         this.openSnackBar();
       })

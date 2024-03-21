@@ -12,3 +12,8 @@ export interface LoginModel {
   senha: string
 }
 
+export interface LoginView {
+  id: number;
+  gruppo: string;
+}
+
