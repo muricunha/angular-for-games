@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Backoffice } from './backoffice';
+import {Backoffice, LoginForm} from './backoffice';
 import { Observable, map } from 'rxjs';
 import { ModalAnswer, ModalOptions } from '../models/alert-confirm.model';
 import { ModalAlterComponent } from './list-users/modal-alter/modal-alter.component';
@@ -41,9 +41,14 @@ export class ForgamesService {
     );
   }
 
-  // para tela de cadastrar
   public cadastro(request: ModalCreate): Observable<ModalCreate> {
     const url = `${this.API}/colaborador/salvar`;
     return this.http.post<ModalCreate>(url, request)
   }
+
+  public logar(request: LoginForm): Observable<LoginForm> {
+    const url = `${this.API}/colaborador/salvar`;
+    return this.http.post<LoginForm>(url, request)
+  }
+
 }

@@ -12,7 +12,7 @@
           <mat-label>Senha</mat-label>
           <input matInput placeholder="Digite sua senha" formControlName="senha">
         </mat-form-field>
-        <button mat-raised-button color="primary" (click)="submit()">Login</button>
+        <button mat-raised-button color="primary" (click)="submit()" [disabled]="createForm.invalid">Login</button>
     </div>
   </form>
 </div>

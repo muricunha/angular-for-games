@@ -7,7 +7,12 @@ export interface Backoffice {
   senha: string
 }
 
-export interface LoginModel{
+export interface LoginModel {
   email: string,
   senha: number
+}
+
+export interface LoginForm {
+  usuario: string,
+  senha: string
 }

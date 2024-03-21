@@ -23,8 +23,11 @@
 
       <mat-form-field appearance="outline" class="change-form-field">
         <mat-label>CPF</mat-label>
-        <input matInput formControlName="codPerson" mask="000.000.000-00">
+        <input matInput formControlName="codPerson" mask="000.000.000-00" (change)="checkIsCpfValid()">
+        <span *ngIf="isValid">CPF válido</span>
+        <span *ngIf="isInvalid">CPF inválido</span>
       </mat-form-field>
+
       <br>
       <mat-form-field appearance="outline">
         <mat-label>Senha</mat-label>
