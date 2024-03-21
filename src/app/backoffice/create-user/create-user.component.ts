@@ -53,10 +53,10 @@ export class CreateUserComponent {
         email: this.createForm.get('email')?.value,
         grupo: this.createForm.get('grupo')?.value,
         cpf: this.createForm.get('codPerson')?.value,
-        senha: this.createForm.get('senha')?.value,
+        senha: this.createForm.get('password')?.value,
       }
-      this.service.cadastro(request).subscribe(()=> {
-
+      this.service.cadastro(request).subscribe((r)=> {
+        console.log(request);
         this.dialogRef.close();
         this.openSnackBar();
       })

@@ -4,6 +4,7 @@ import * as CryptoJS from 'crypto-js';
 import {LoginModel} from "../backoffice";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from './login.service';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-login',
@@ -12,7 +13,9 @@ import { LoginService } from './login.service';
 })
 export class UserLoginComponent {
 
-  constructor(private loginService: LoginService){
+  constructor(private loginService: LoginService,
+   private router: Router,
+   private snack: MatSnackBar){
 
   }
   public createForm: FormGroup;
@@ -33,8 +36,14 @@ export class UserLoginComponent {
       senha: this.createForm.get('senha')?.value,
     }
     this.loginService.logar(request).subscribe((r) => {
-      console.log(r)
-    })
+      console.log(r.status)
+      if(r.status === 200){
+        this.router.navigate(['/escolhertela'])
+      }
+    },
+      error => {
+        this.snack.open('Email ou senha inválidos', 'Fechar')
+      }
+    );
   }
-
 }

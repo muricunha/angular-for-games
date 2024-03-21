@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaderResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginModel } from '../backoffice';
 import { Observable } from 'rxjs';
@@ -10,9 +10,9 @@ export class LoginService {
   private readonly API = 'http://localhost:8081';
   constructor(public http: HttpClient) { }
 
-  public logar(request: LoginModel): Observable<LoginModel> {
+  public logar(request: LoginModel): Observable<HttpResponse<LoginModel>> {
     const url = `${this.API}/colaborador/login`;
-    return this.http.post<LoginModel>(url, request)
+    return this.http.post<LoginModel>(url, request, {observe: 'response', responseType: 'json'})
   }
 
 }
