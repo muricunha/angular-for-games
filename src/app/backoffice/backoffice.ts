@@ -9,10 +9,6 @@ export interface Backoffice {
 
 export interface LoginModel {
   email: string,
-  senha: number
-}
-
-export interface LoginForm {
-  usuario: string,
   senha: string
 }
+

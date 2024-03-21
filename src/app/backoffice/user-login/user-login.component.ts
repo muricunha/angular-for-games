@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
-import {LoginForm} from "../backoffice";
+import {LoginModel} from "../backoffice";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-user-login',
@@ -11,37 +12,29 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class UserLoginComponent {
 
-  usuario: string;
-  senha: string;
-  senhaEncriptada: string;
-  loginForm: LoginForm;
+  constructor(private loginService: LoginService){
 
+  }
+  public createForm: FormGroup;
+
+  ngOnInit(){
+    this.createForm = new FormGroup({
+      usuario: new FormControl('', [Validators.required, Validators.email]),
+      senha: new FormControl('', [Validators.required])
+    })
+  }
 
   public submit(): void {
-    debugger;
-    this.capturarDadosFormulario();
-    this.encriptarSenha();
-    this.criarDadosRequisicao();
-  }
+    // const senha = this.createForm.get('senha')?.value;
+    // const cryptSenha = CryptoJS.SHA256(senha).toString();
 
-  private capturarDadosFormulario() {
-    this.usuario = this.createForm.get('usuario')?.value ?? '';
-    this.senha = this.createForm.get('senha')?.value ?? '';
-  }
-
-  private encriptarSenha() {
-    this.senhaEncriptada = CryptoJS.SHA256(this.senha).toString();
-  }
-
-  private criarDadosRequisicao() {
-    this.loginForm = {
-      usuario: this.usuario,
-      senha: this.senhaEncriptada
+    const request: LoginModel = {
+      email: this.createForm.get('usuario')?.value,
+      senha: this.createForm.get('senha')?.value,
     }
+    this.loginService.logar(request).subscribe((r) => {
+      console.log(r)
+    })
   }
 
-  public createForm = new FormGroup({
-    usuario: new FormControl('', [Validators.required, Validators.email]),
-    senha: new FormControl('', [Validators.required])
-  })
 }

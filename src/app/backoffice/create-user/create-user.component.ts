@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ForgamesService} from '../forgames.service';
 import {ModalCreate} from '../backoffice-create';
-import * as bcrypt from 'bcryptjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import * as CryptoJS from 'crypto-js';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 interface Grupo {
@@ -20,7 +20,7 @@ export class CreateUserComponent {
   isValid: boolean = false;
   isInvalid: boolean = false;
   isCpfValid: boolean = false;
-
+  public createForm: FormGroup;
   grupo: Grupo[] = [
     {value: 'Administrador', viewValue: 'administrador'},
     {value: 'estoquista', viewValue: 'estoquista'},
@@ -31,18 +31,29 @@ export class CreateUserComponent {
               private dialogRef: MatDialogRef<CreateUserComponent>) {
   }
 
+  ngOnInit(){
+    this.createForm = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email]),
+      nome: new FormControl('', [Validators.required]),
+      grupo: new FormControl('', [Validators.required]),
+      codPerson: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required])
+    })
+  }
+
   public sendCreate(): void {
 
-    const senha = this.createForm.get('password')?.value ?? '';
-    const hashedSenha = bcrypt.hashSync(senha, 10);
+    // const senha = this.createForm.get('senha')?.value;
+    // const encriptSenha = CryptoJS.SHA256(senha).toString()
 
     if (this.isCpfValid) {
       const request: ModalCreate = {
-        nome: this.createForm.get('nome')?.value ?? '',
-        email: this.createForm.get('email')?.value ?? '',
-        grupo: this.createForm.get('grupo')?.value ?? '',
-        cpf: this.createForm.get('codPerson')?.value ?? '',
-        senha: hashedSenha,
+        nome: this.createForm.get('nome')?.value,
+        email: this.createForm.get('email')?.value,
+        grupo: this.createForm.get('grupo')?.value,
+        cpf: this.createForm.get('codPerson')?.value,
+        senha: this.createForm.get('senha')?.value,
       }
       this.service.cadastro(request).subscribe(()=> {
 
@@ -55,16 +66,6 @@ export class CreateUserComponent {
   public openSnackBar(): void {
     this.snackBar.open('cadastro feito com sucesso!', 'Fechar')
   }
-
-  public createForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    nome: new FormControl('', [Validators.required]),
-    grupo: new FormControl('', [Validators.required]),
-    codPerson: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required])
-  })
-
 
   public testaCPF(cpf: string): boolean {
     var soma
