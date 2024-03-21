@@ -3,17 +3,40 @@
 </header>
 <hr>
 <form [formGroup]="createForm">
-    <section class="section-field">
+  <section class="themas">
+    <div class="form-row between">
+      <mat-form-field appearance="outline">
+        <mat-label>Código Produto</mat-label>
+        <input matInput formControlName="codProduto" maxlength="3">
+      </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Produto</mat-label>
-        <input matInput formControlName="produto" maxlength="50">
+        <input matInput formControlName="produto" maxlength="200">
       </mat-form-field>
-    </section>
-    <section class="section-field">
-        <mat-form-field appearance="outline">
-          <mat-label>Descrição</mat-label>
-          <input matInput formControlName="description" maxlength="500">
-        </mat-form-field>
-      </section>
-
+      <mat-form-field appearance="outline">
+        <mat-label>Avaliação</mat-label>
+        <mat-select formControlName="avaliacao">
+          <mat-option *ngFor="let star of star" [value]="star.value">{{star.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="description" maxlength="2000"></textarea>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Preço</mat-label>
+        <input matInput formControlName="preco" mask="0*,00">
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Qtd Estoque</mat-label>
+        <input matInput formControlName="estoque">
+      </mat-form-field>
+    </div>
+  </section>
+  <mat-dialog-actions align="end">
+    <button mat-flat-button mat-dialog-close>Cancelar</button>
+    <button mat-button color="primary" (click)="createProduto()" [disabled]="createForm.invalid">Criar</button>
+  </mat-dialog-actions>
 </form>

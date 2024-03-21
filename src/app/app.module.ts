@@ -25,6 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
 import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
+import { ChangeProductComponent } from './backoffice-product/change-product/change-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { ListProductComponent } from './backoffice-product/list-product/list-pro
     ChooseScreenComponent,
     CreateProductComponent,
     ListProductComponent,
+    ChangeProductComponent,
   ],
   imports: [
     BrowserModule,
