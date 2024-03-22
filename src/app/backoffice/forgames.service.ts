@@ -6,6 +6,7 @@ import { ModalAnswer, ModalOptions } from '../models/alert-confirm.model';
 import { ModalAlterComponent } from './list-users/modal-alter/modal-alter.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCreate } from './backoffice-create';
+import {ColaboradorForm} from "./list-users/list-users.component";
 @Injectable({
   providedIn: 'root',
 })
@@ -14,8 +15,8 @@ export class ForgamesService {
   constructor(private http: HttpClient, private readonly dialog: MatDialog) {}
 
   // para tela de editar
-  list(): Observable<Backoffice[]> {
-    return this.http.get<Backoffice[]>(`${this.API}/colaborador/listar`);
+  list(colaborador: ColaboradorForm): Observable<Backoffice[]> {
+    return this.http.post<Backoffice[]>(`${this.API}/colaborador/listar`, colaborador);
   }
 
   edit(user: Backoffice): Observable<Backoffice> {

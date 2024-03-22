@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { CreateProductComponent } from '../create-product/create-product.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Product } from '../product';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ModalOptions } from 'src/app/models/alert-confirm.model';
-import { ForgamesService } from 'src/app/backoffice/forgames.service';
-import { ChangeProductComponent } from '../change-product/change-product.component';
-import { ProductService } from '../product.service';
+import {Component} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {CreateProductComponent} from '../create-product/create-product.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Product, ProductForm} from '../product';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSlideToggleChange} from '@angular/material/slide-toggle';
+import {ModalOptions} from 'src/app/models/alert-confirm.model';
+import {ForgamesService} from 'src/app/backoffice/forgames.service';
+import {ChangeProductComponent} from '../change-product/change-product.component';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-list-product',
@@ -22,33 +22,40 @@ export class ListProductComponent {
   public toggleState: boolean = false;
   public dataSourceList = new MatTableDataSource<Product>();
   displayedColumns: string[] = ['codigoProduto', 'nome', 'avaliacao', 'descricao', 'preco', 'qtdEstoque', 'alterar', 'status', 'button'];
+
   constructor(private dialog: MatDialog,
               private service: ForgamesService,
-              private serviceProduct: ProductService,){
+              private serviceProduct: ProductService,) {
   }
 
-  ngOnInit(){
+  public findProduct() {
+    const nomeProduto = this.listProduct.value.nome;
+    const productForm = {
+      nome: nomeProduto
+    } as ProductForm;
+
+    this.serviceProduct.listProduct(productForm).subscribe((listProduct) => {
+      this.dataSourceList.data = listProduct;
+    }, error => {
+      this.dataSourceList.data = [];
+    });
+
+  }
+
+  ngOnInit() {
     this.listProduct = new FormGroup({
       nome: new FormControl('')
     })
   }
 
-  public findProduct() {
-    const emailSearch = this.listProduct.value.nome;
-    this.serviceProduct.listProduct().subscribe((listProduct) => {
-      const filterUsers = listProduct.filter(user => user.nome === emailSearch)
-      this.dataSourceList.data = filterUsers;
-    });
-  }
-
-  public openDialogCreate(): void{
+  public openDialogCreate(): void {
     this.dialog.open(CreateProductComponent, {
       width: '1000px'
     })
   }
 
   public openDialog(value: Product): void {
-    this.dialog.open(ChangeProductComponent,{
+    this.dialog.open(ChangeProductComponent, {
       width: '1000px',
       data: value
     });
@@ -65,7 +72,7 @@ export class ListProductComponent {
     this.service.openConfirmModal(confirmOption).subscribe((confirm) => {
       if (confirm.answer === 'yes') {
         this.isChecked = this.toggleState;
-        if(this.nameChange === 'Ativo'){
+        if (this.nameChange === 'Ativo') {
           this.nameChange = 'Inativo';
         } else {
           this.nameChange = 'Ativo'

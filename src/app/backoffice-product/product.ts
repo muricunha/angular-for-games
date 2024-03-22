@@ -7,3 +7,7 @@ export interface Product {
   preco: number,
   qtdEstoque: number
 }
+
+export interface ProductForm {
+  nome: string
+}

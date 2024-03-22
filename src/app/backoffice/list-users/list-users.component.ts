@@ -14,6 +14,10 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ChooseScreenComponent } from '../choose-screen/choose-screen.component';
 import { CreateUserComponent } from '../create-user/create-user.component';
 
+export interface ColaboradorForm {
+  nome: string
+}
+
 @Component({
   selector: 'app-list-users',
   templateUrl: './list-users.component.html',
@@ -37,11 +41,16 @@ export class ListUsersComponent {
   }
 
   public findUsers() {
-    const emailSearch = this.listForm.value.nome;
-    this.service.list().subscribe((listaUsers) => {
-      const filterUsers = listaUsers.filter(user => user.nome === emailSearch)
-      this.dataSourceList.data = filterUsers;
+    const colaborador = {
+      nome: this.listForm.value.nome
+    } as ColaboradorForm;
+
+    this.service.list(colaborador).subscribe((listaUsers) => {
+      this.dataSourceList.data = listaUsers;
+    }, error => {
+      this.dataSourceList.data = [];
     });
+
   }
 
   public openDialog(value: Backoffice): void {
