@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import {Router} from '@angular/router';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 
 @Component({
@@ -8,8 +9,9 @@ import {Router} from '@angular/router';
   styleUrls: ['./choose-screen.component.scss']
 })
 export class ChooseScreenComponent implements OnInit {
+  user$ = this.authenticationService.getUser();
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -20,4 +22,9 @@ export class ChooseScreenComponent implements OnInit {
     }
   }
 
+
+    public sair(): void {
+    this.authenticationService.logout();
+    this.router.navigateByUrl('/login')
+  }
 }

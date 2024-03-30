@@ -46,7 +46,9 @@ export class UserLoginComponent {
         }
       },
       error => {
-        this.snack.open('Email ou senha inválidos', 'Fechar')
+        this.snack.open('Email ou senha inválidos', 'Fechar', {
+          duration: 4000
+        })
       }
     );
   }

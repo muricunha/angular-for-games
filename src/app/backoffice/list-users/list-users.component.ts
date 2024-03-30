@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Backoffice } from '../backoffice';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -29,15 +29,18 @@ export class ListUsersComponent {
   public nameChange: string = 'Ativo';
   public isChecked: boolean = true;
   public toggleState: boolean = false;
+  public isActive: boolean = false;
   public dataSourceList = new MatTableDataSource<Backoffice>();
   constructor(
     private service: ForgamesService,
     public dialog: MatDialog,
-    public slide: MatSlideToggle,
     public route: Router,
   ) {}
 
+  @ViewChild('slideToggle') slideToggle: MatSlideToggle;
+
   ngOnInit() {
+    this.findUsers();
   }
 
   public findUsers() {
@@ -67,7 +70,7 @@ export class ListUsersComponent {
   }
 
   public onSlideToggleChange(event: MatSlideToggleChange): void {
-    this.toggleState = event.checked;
+
     const confirmOption: ModalOptions = {
       dialogMessage: {
         message: 'Deseja Alterar o status do Usuário?',
@@ -76,14 +79,15 @@ export class ListUsersComponent {
 
     this.service.openConfirmModal(confirmOption).subscribe((confirm) => {
       if (confirm.answer === 'yes') {
-        this.isChecked = this.toggleState;
-        if(this.nameChange === 'Ativo'){
-          this.nameChange = 'Inativo';
+        this.isActive = this.toggleState;
+        if(this.isActive === true){
+        this.nameChange = 'Ativo'
         } else {
-          this.nameChange = 'Ativo'
+          this.nameChange = 'Inativo'
         }
       } else if (confirm.answer === 'no') {
         event.source.checked = !this.toggleState;
+
       }
     });
   }

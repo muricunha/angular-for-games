@@ -22,8 +22,8 @@ export class CreateUserComponent {
   isCpfValid: boolean = false;
   public createForm: FormGroup;
   grupo: Grupo[] = [
-    {value: 'Administrador', viewValue: 'administrador'},
-    {value: 'estoquista', viewValue: 'estoquista'},
+    {value: 'ADMIN', viewValue: 'administrador'},
+    {value: 'ESTOQ', viewValue: 'estoquista'},
   ];
 
   constructor(public service: ForgamesService,
@@ -57,6 +57,7 @@ export class CreateUserComponent {
         senha: encriptSenha,
       }
       this.service.cadastro(request).subscribe((r) => {
+        console.log(request)
         this.dialogRef.close();
         this.openSnackBar();
       })
@@ -64,7 +65,9 @@ export class CreateUserComponent {
   }
 
   public openSnackBar(): void {
-    this.snackBar.open('cadastro feito com sucesso!', 'Fechar')
+    this.snackBar.open('cadastro feito com sucesso!', 'Fechar', {
+      duration: 4000
+    })
   }
 
   public testaCPF(cpf: string): boolean {

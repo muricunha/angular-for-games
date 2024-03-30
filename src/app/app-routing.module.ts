@@ -8,6 +8,7 @@ import { UserLoginComponent } from './backoffice/user-login/user-login.component
 import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.component';
 import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
 import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
+import { authGuardsGuard } from './guards/auth-guards.guard';
 
 
 const routes: Routes = [
@@ -22,11 +23,13 @@ const routes: Routes = [
   },
   {
     path: 'escolhertela',
-    component: ChooseScreenComponent
+    component: ChooseScreenComponent,
   },
   {
     path: 'listarUsuarios',
-    component: ListUsersComponent
+    component: ListUsersComponent,
+    canActivate: [authGuardsGuard],
+    data: {grupo: 'ADMIN'}
   },
   {
     path: 'editarUsuarios',
