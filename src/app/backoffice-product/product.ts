@@ -5,7 +5,8 @@ export interface Product {
   avaliacao: number,
   descricao: string,
   preco: number,
-  qtdEstoque: number
+  qtdEstoque: number,
+  foto?: any
 }
 
 export interface ProductForm {

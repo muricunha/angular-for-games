@@ -4,7 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserLoginComponent } from './backoffice/user-login/user-login.component';
 import { ListUsersComponent } from './backoffice/list-users/list-users.component';
-import { FooterComponent } from './backoffice/footer/footer.component';
+import { FooterComponent } from './logged/footer/footer.component';
+import { HeaderComponent } from './logged/header/header.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
@@ -26,6 +27,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
 import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
 import { ChangeProductComponent } from './backoffice-product/change-product/change-product.component';
+import { DetailProductComponent } from './logged/detail-product/detail-product.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +41,8 @@ import { ChangeProductComponent } from './backoffice-product/change-product/chan
     CreateProductComponent,
     ListProductComponent,
     ChangeProductComponent,
+    DetailProductComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

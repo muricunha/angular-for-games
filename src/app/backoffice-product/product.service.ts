@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Product, ProductForm} from './product';
 import { Observable } from 'rxjs';
@@ -24,4 +24,12 @@ export class ProductService {
     const url = `${this.API}/produto/salvar`;
     return this.http.post<Product>(url, request)
   }
+
+  public upload(file: FileList): Observable<HttpEvent<any>> {
+    const url = new HttpRequest ('POST', `${this.API}/produto/salvar`, file, {
+      responseType: 'json'
+    });
+    return this.http.request(url)
+  }
+
 }

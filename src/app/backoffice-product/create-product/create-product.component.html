@@ -2,7 +2,7 @@
     <h1>Cadastrar Produto</h1>
 </header>
 <hr>
-<form [formGroup]="createForm">
+<form [formGroup]="createForm" enctype="multipart/form-data" action="/">
   <section class="themas">
     <div class="form-row between">
       <mat-form-field appearance="outline">
@@ -35,8 +35,16 @@
       </mat-form-field>
     </div>
   </section>
+  <section>
+    <div>
+      <input type="file" multiple formControlName="foto" (change)="selectFiles($event)">
+    </div>
+    <div *ngFor="let msg of message" class="photos-container">
+      <img [src]="message" [alt]="message" class="photos">
+    </div>
+  </section>
   <mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close>Cancelar</button>
-    <button mat-button color="primary" (click)="createProduto()" [disabled]="createForm.invalid">Criar</button>
+    <button type="submit" mat-button color="primary" (click)="uploadFiles()" [disabled]="createForm.invalid">Criar</button>
   </mat-dialog-actions>
 </form>

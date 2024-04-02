@@ -15,6 +15,8 @@ interface Avaliation {
 })
 export class CreateProductComponent {
   public createForm: FormGroup;
+  public message: string[] = [];
+  public selectedFiles? : Array<FileList>;
   star: Avaliation[] = [
     {value: '0.5', viewValue: '0.5'},
     {value: '1', viewValue: '1'},
@@ -27,7 +29,6 @@ export class CreateProductComponent {
     {value: '4.5', viewValue: '4.5'},
     {value: '5', viewValue: '5'},
   ];
-
   constructor(public productService: ProductService,
     private dialogRef: MatDialogRef<CreateProductComponent>,
     private snackBar: MatSnackBar){
@@ -42,6 +43,7 @@ export class CreateProductComponent {
       description: new FormControl('', [Validators.required]),
       preco: new FormControl('0,00', [Validators.required]),
       estoque: new FormControl('', [Validators.required]),
+      foto: new FormControl('')
     })
   }
 
@@ -58,10 +60,47 @@ export class CreateProductComponent {
         console.log(request);
         this.dialogRef.close();
         this.openSnackBar();
+      });
+
+  }
+
+  public selectFiles(event: any): void {
+    this.selectedFiles = [];
+
+    if(event.target.files.length === 0){
+      return;
+    }
+
+    for(let i = 0; i < event.target.files.length; i++){
+      this.selectedFiles.push(event.target.files[i])
+      console.log(this.selectedFiles)
+    }
+  }
+
+  public uploadFiles(): void{
+
+    if(!this.selectedFiles || this.selectedFiles.length === 0){
+      return;
+    }
+
+    const formData = new FormData();
+
+    this.selectedFiles.forEach((f: any) => {
+      formData.append('foto', f)
+    })
+
+    this.upload(formData)
+  }
+
+  public upload( file: any): void {
+    if(file){
+      this.productService.upload(file).subscribe((event: any) => {
       })
+    }
   }
 
   public openSnackBar(): void {
     this.snackBar.open('cadastro feito com sucesso!', 'Fechar')
   }
+
 }

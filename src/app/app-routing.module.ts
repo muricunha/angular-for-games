@@ -9,6 +9,7 @@ import { ChooseScreenComponent } from './backoffice/choose-screen/choose-screen.
 import { CreateProductComponent } from './backoffice-product/create-product/create-product.component';
 import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
 import { authGuardsGuard } from './guards/auth-guards.guard';
+import { DetailProductComponent } from './logged/detail-product/detail-product.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,10 @@ const routes: Routes = [
   {
     path: 'listarProduto',
     component: ListProductComponent,
+  },
+  {
+    path: 'inicio',
+    component: DetailProductComponent
   }
 ];
 

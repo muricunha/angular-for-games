@@ -1,0 +1,21 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container_button{
+  display: flex;
+  align-items: center;
+  margin-right: 60px;
+}
+
+.img{
+  margin-left: 20px;
+}
