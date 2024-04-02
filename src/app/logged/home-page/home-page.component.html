@@ -1,0 +1,9 @@
+<app-header></app-header>
+<app-container>
+  <div class="card-wrapper">
+    <div *ngFor="let product of products">
+      <app-card-product [product]="product"></app-card-product>
+    </div>
+  </div>
+</app-container>
+<app-footer></app-footer>

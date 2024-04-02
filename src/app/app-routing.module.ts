@@ -10,6 +10,7 @@ import { CreateProductComponent } from './backoffice-product/create-product/crea
 import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
 import { authGuardsGuard } from './guards/auth-guards.guard';
 import { DetailProductComponent } from './logged/detail-product/detail-product.component';
+import { HomePageComponent } from './logged/home-page/home-page.component';
 
 
 const routes: Routes = [
@@ -42,6 +43,10 @@ const routes: Routes = [
   },
   {
     path: 'inicio',
+    component: HomePageComponent
+  },
+  {
+    path: 'produto/:id',
     component: DetailProductComponent
   }
 ];

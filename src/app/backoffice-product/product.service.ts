@@ -20,6 +20,10 @@ export class ProductService {
     return this.http.post<Product[]>(`${this.API}/produto/listar`, productForm);
   }
 
+  listProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.API}/produto/listar`);
+  }
+
   public criarProduto(request: Product): Observable<Product> {
     const url = `${this.API}/produto/salvar`;
     return this.http.post<Product>(url, request)

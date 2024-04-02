@@ -28,6 +28,10 @@ import { CreateProductComponent } from './backoffice-product/create-product/crea
 import { ListProductComponent } from './backoffice-product/list-product/list-product.component';
 import { ChangeProductComponent } from './backoffice-product/change-product/change-product.component';
 import { DetailProductComponent } from './logged/detail-product/detail-product.component';
+import { HomePageComponent } from './logged/home-page/home-page.component';
+import { CardProductComponent } from './logged/card-product/card-product.component';
+import {MatCardModule} from '@angular/material/card';
+import { ContainerComponent } from './logged/container/container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,7 +46,10 @@ import { DetailProductComponent } from './logged/detail-product/detail-product.c
     ListProductComponent,
     ChangeProductComponent,
     DetailProductComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomePageComponent,
+    CardProductComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +70,7 @@ import { DetailProductComponent } from './logged/detail-product/detail-product.c
     CommonModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatCardModule
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,

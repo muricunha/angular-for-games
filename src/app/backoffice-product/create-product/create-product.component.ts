@@ -64,40 +64,40 @@ export class CreateProductComponent {
 
   }
 
-  public selectFiles(event: any): void {
-    this.selectedFiles = [];
+  // public selectFiles(event: any): void {
+  //   this.selectedFiles = [];
 
-    if(event.target.files.length === 0){
-      return;
-    }
+  //   if(event.target.files.length === 0){
+  //     return;
+  //   }
 
-    for(let i = 0; i < event.target.files.length; i++){
-      this.selectedFiles.push(event.target.files[i])
-      console.log(this.selectedFiles)
-    }
-  }
+  //   for(let i = 0; i < event.target.files.length; i++){
+  //     this.selectedFiles.push(event.target.files[i])
+  //     console.log(this.selectedFiles)
+  //   }
+  // }
 
-  public uploadFiles(): void{
+  // public uploadFiles(): void{
 
-    if(!this.selectedFiles || this.selectedFiles.length === 0){
-      return;
-    }
+  //   if(!this.selectedFiles || this.selectedFiles.length === 0){
+  //     return;
+  //   }
 
-    const formData = new FormData();
+  //   const formData = new FormData();
 
-    this.selectedFiles.forEach((f: any) => {
-      formData.append('foto', f)
-    })
+  //   this.selectedFiles.forEach((f: any) => {
+  //     formData.append('foto', f)
+  //   })
 
-    this.upload(formData)
-  }
+  //   this.upload(formData)
+  // }
 
-  public upload( file: any): void {
-    if(file){
-      this.productService.upload(file).subscribe((event: any) => {
-      })
-    }
-  }
+  // public upload( file: any): void {
+  //   if(file){
+  //     this.productService.upload(file).subscribe((event: any) => {
+  //     })
+  //   }
+  // }
 
   public openSnackBar(): void {
     this.snackBar.open('cadastro feito com sucesso!', 'Fechar')
