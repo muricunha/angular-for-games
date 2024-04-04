@@ -1,13 +1,15 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Product } from '../product';
-import { ProductService } from '../product.service';
-import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Product} from '../product';
+import {ProductService} from '../product.service';
+import {MatDialogRef} from '@angular/material/dialog';
+import {MatSnackBar} from '@angular/material/snack-bar';
+
 interface Avaliation {
   value: string;
   viewValue: string;
 }
+
 @Component({
   selector: 'app-create-product',
   templateUrl: './create-product.component.html',
@@ -29,14 +31,15 @@ export class CreateProductComponent {
     {value: '4.5', viewValue: '4.5'},
     {value: '5', viewValue: '5'},
   ];
+  file: File;
   constructor(public productService: ProductService,
-    private dialogRef: MatDialogRef<CreateProductComponent>,
-    private snackBar: MatSnackBar){
+              private dialogRef: MatDialogRef<CreateProductComponent>,
+              private snackBar: MatSnackBar) {
 
   }
 
-  ngOnInit(){
-     this.createForm = new FormGroup({
+  ngOnInit() {
+    this.createForm = new FormGroup({
       codProduto: new FormControl('', [Validators.required]),
       produto: new FormControl('', [Validators.required]),
       avaliacao: new FormControl('', [Validators.required]),
@@ -48,19 +51,21 @@ export class CreateProductComponent {
   }
 
   public createProduto(): void {
-      const request: Product = {
-        codigoProduto: this.createForm.get('codProduto')?.value,
-        nome: this.createForm.get('produto')?.value,
-        avaliacao: this.createForm.get('avaliacao')?.value,
-        descricao: this.createForm.get('description')?.value,
-        preco: this.createForm.get('preco')?.value,
-        qtdEstoque: this.createForm.get('estoque')?.value,
-      }
-      this.productService.criarProduto(request).subscribe((r)=> {
-        console.log(request);
-        this.dialogRef.close();
-        this.openSnackBar();
-      });
+
+    const request: Product = {
+      codigoProduto: this.createForm.get('codProduto')?.value,
+      nome: this.createForm.get('produto')?.value,
+      avaliacao: this.createForm.get('avaliacao')?.value,
+      descricao: this.createForm.get('description')?.value,
+      preco: this.createForm.get('preco')?.value,
+      qtdEstoque: this.createForm.get('estoque')?.value,
+      caminhoImagem: ''
+    }
+    this.productService.criarProduto(request).subscribe(() => {
+      console.log(request);
+      this.dialogRef.close();
+      this.openSnackBar();
+    })
 
   }
 
@@ -101,6 +106,10 @@ export class CreateProductComponent {
 
   public openSnackBar(): void {
     this.snackBar.open('cadastro feito com sucesso!', 'Fechar')
+  }
+
+  public onFileSelected(event: any): void {
+    this.file = event.target.files[0];
   }
 
 }

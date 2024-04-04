@@ -6,9 +6,14 @@ export interface Product {
   descricao: string,
   preco: number,
   qtdEstoque: number,
-  foto?: any
+  caminhoImagem: string,
+
 }
 
 export interface ProductForm {
   nome: string
+}
+
+export interface Imagem {
+  imagem: File | string
 }

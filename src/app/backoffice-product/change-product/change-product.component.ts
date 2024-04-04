@@ -1,4 +1,4 @@
-import { Component, Inject, Optional } from '@angular/core';
+import { Component, Inject, Optional} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -27,6 +27,7 @@ export class ChangeProductComponent {
     {value: '4.5', viewValue: '4.5'},
     {value: '5', viewValue: '5'},
   ];
+  file: File;
   public isChecked: boolean = false;
   public productForm: FormGroup = this.initialForm;
   constructor(
@@ -47,19 +48,18 @@ export class ChangeProductComponent {
         descricao: this.productForm.get('description')?.value,
         preco: this.productForm.get('preco')?.value,
         qtdEstoque: this.productForm.get('estoque')?.value,
+        caminhoImagem: ''
       }
-      debugger;
-      this.serviceProduct.editProduto(request).subscribe((r)=> {
-        console.log(request);
-        this.dialogRef.close();
-        this.openSnackBar();
-      })
+        this.serviceProduct.editProduto(request).subscribe((r)=> {
+          console.log(request);
+          this.dialogRef.close();
+          this.openSnackBar();
+        })
     }
 
     public openSnackBar(): void {
       this.snackBar.open('edição feita com sucesso!', 'Fechar')
     }
-
 
     private get initialForm(): FormGroup {
       return this.productForm = this.formBuilder.group({
@@ -71,4 +71,8 @@ export class ChangeProductComponent {
       estoque: new FormControl(this.data.qtdEstoque, [Validators.required]),
       })
     }
+
+  public onFileSelected(event: any): void {
+    this.file = event.target.files[0];
+  }
 }

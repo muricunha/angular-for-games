@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { CreateProductComponent } from '../create-product/create-product.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Product, ProductForm } from '../product';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ModalOptions } from 'src/app/models/alert-confirm.model';
-import { ForgamesService } from 'src/app/backoffice/forgames.service';
-import { ChangeProductComponent } from '../change-product/change-product.component';
-import { ProductService } from '../product.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {CreateProductComponent} from '../create-product/create-product.component';
+import {MatDialog} from '@angular/material/dialog';
+import {Product, ProductForm} from '../product';
+import {MatTableDataSource} from '@angular/material/table';
+import {MatSlideToggleChange} from '@angular/material/slide-toggle';
+import {ModalOptions} from 'src/app/models/alert-confirm.model';
+import {ForgamesService} from 'src/app/backoffice/forgames.service';
+import {ChangeProductComponent} from '../change-product/change-product.component';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-list-product',
   templateUrl: './list-product.component.html',
   styleUrls: ['./list-product.component.scss'],
 })
-export class ListProductComponent {
-  public listProduct: FormGroup;
+
+
+export class ListProductComponent implements OnInit{
+  public listProduct: FormGroup
   public nameChange: string = 'Ativo';
   public isChecked: boolean = true;
   public toggleState: boolean = false;
@@ -40,13 +42,6 @@ export class ListProductComponent {
     private serviceProduct: ProductService
   ) {}
 
-  ngOnInit() {
-    this.listProduct = new FormGroup({
-      nome: new FormControl(''),
-    });
-    this.findProduct();
-  }
-
   public findProduct() {
     const nomeProduto = this.listProduct.value.nome;
     const productForm = {
@@ -61,6 +56,23 @@ export class ListProductComponent {
         this.dataSourceList.data = [];
       }
     );
+  }
+
+  ngOnInit() {
+    this.listProduct = new FormGroup({
+      nome: new FormControl('')
+    })
+    this.findProduct();
+      const nomeProduto = this.listProduct.value.nome;
+      const productForm = {
+        nome: nomeProduto
+      } as ProductForm;
+
+      this.serviceProduct.listProduct(productForm).subscribe((listProduct) => {
+        this.dataSourceList.data = listProduct;
+      }, error => {
+        this.dataSourceList.data = [];
+      });
   }
 
   public openDialogCreate(): void {

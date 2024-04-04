@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 import { Component, ViewChild } from '@angular/core';
+=======
+import { Component, OnInit } from '@angular/core';
+>>>>>>> Stashed changes
 import { Backoffice } from '../backoffice';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +15,6 @@ import {
 } from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ChooseScreenComponent } from '../choose-screen/choose-screen.component';
 import { CreateUserComponent } from '../create-user/create-user.component';
 
 export interface ColaboradorForm {
@@ -23,7 +26,7 @@ export interface ColaboradorForm {
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss'],
 })
-export class ListUsersComponent {
+export class ListUsersComponent  implements OnInit {
 
   displayedColumns: string[] = ['nome', 'email', 'status', 'alterar', 'button'];
   public nameChange: string = 'Ativo';
@@ -37,12 +40,15 @@ export class ListUsersComponent {
     public route: Router,
   ) {}
 
+<<<<<<< Updated upstream
   @ViewChild('slideToggle') slideToggle: MatSlideToggle;
 
   ngOnInit() {
     this.findUsers();
   }
 
+=======
+>>>>>>> Stashed changes
   public findUsers() {
     const colaborador = {
       nome: this.listForm.value.nome
@@ -95,5 +101,18 @@ export class ListUsersComponent {
   public listForm = new FormGroup({
     nome: new FormControl('')
   })
+
+  ngOnInit() : void{
+    const colaborador = {
+      nome: this.listForm.value.nome
+    } as ColaboradorForm;
+
+    this.service.list(colaborador).subscribe((listaUsers) => {
+      this.dataSourceList.data = listaUsers;
+    }, error => {
+      this.dataSourceList.data = [];
+    });
+
+  }
 
 }

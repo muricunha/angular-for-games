@@ -1,15 +1,15 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient, HttpEvent, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 import {Product, ProductForm} from './product';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-
   private readonly API = 'http://localhost:8081';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   editProduto(user: Product): Observable<Product> {
     const url = `${this.API}/produto/alterar`;
@@ -30,10 +30,25 @@ export class ProductService {
   }
 
   public upload(file: FileList): Observable<HttpEvent<any>> {
-    const url = new HttpRequest ('POST', `${this.API}/produto/salvar`, file, {
+    const url = new HttpRequest('POST', `${this.API}/produto/salvar`, file, {
       responseType: 'json'
     });
     return this.http.request(url)
+  }
+
+  public salvarImagem(imagem: File): Observable<string> {
+    const url = `${this.API}/produto/salvarImagem`;
+    debugger;
+    return this.http.post<string>(
+      url,
+      {
+        imagem: imagem
+      },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
   }
 
 }
