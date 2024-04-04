@@ -1,4 +1,44 @@
-
 <app-header></app-header>
-<app-container></app-container>
-<app-footer></app-footer>
+  <section class="container">
+    <h1 class="title">{{title}}</h1>
+    <div class="container-sup">
+    <div class="choose mat-elevation-z4">
+      <img src="../../../assets/gta.jpeg" class="image">
+      <ul class="carrossel">
+        <li>
+          <span class="carrossel-cont">
+            <img src="../../../assets/gta.jpeg" alt="" class="img-carrossel">
+          </span>
+        </li>
+        <li>
+          <span class="carrossel-cont">
+            <img src="../../../assets/gta.jpeg" alt="" class="img-carrossel">
+          </span>
+        </li>
+        <li>
+          <span class="carrossel-cont">
+            <img src="../../../assets/gta.jpeg" alt="" class="img-carrossel">
+          </span>
+        </li>
+        <li>
+          <span class="carrossel-cont">
+            <img src="../../../assets/gta.jpeg" alt="" class="img-carrossel">
+          </span>
+        </li>
+        <li>
+          <span class="carrossel-cont">
+            <img src="../../../assets/gta.jpeg" alt="" class="img-carrossel">
+          </span>
+        </li>
+      </ul>
+    </div>
+    <div class="choose-description mat-elevation-z4">
+    <p class="description">{{descricao}}</p>
+      <div class="detail-price">
+        <p>R$ {{preco}}</p>
+        <p class="star">Avaliação (1-5): {{avaliacao}}</p>
+      </div>
+      <button mat-raised-button color="primary" class="button-buy">COMPRAR</button>
+    </div>
+  </div>
+  </section>

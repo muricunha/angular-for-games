@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/backoffice-product/product';
 
 @Component({
@@ -8,4 +9,10 @@ import { Product } from 'src/app/backoffice-product/product';
 })
 export class CardProductComponent {
 @Input() product: Product;
+
+constructor(private router: Router){}
+
+// public openDetailProduct(product: Product): void {
+//   this.router.navigate(['/produto', product])
+// }
 }
