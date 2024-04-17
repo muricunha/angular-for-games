@@ -1,5 +1,8 @@
 <app-header></app-header>
 <app-container>
+  <div>
+    <h1 *ngIf="products === [] || undefined">Não tem nada</h1>
+  </div>
   <div class="card-wrapper">
     <div *ngFor="let product of products">
       <app-card-product [product]="product"></app-card-product>

@@ -32,6 +32,8 @@ import { HomePageComponent } from './logged/home-page/home-page.component';
 import { CardProductComponent } from './logged/card-product/card-product.component';
 import {MatCardModule} from '@angular/material/card';
 import { ContainerComponent } from './logged/container/container.component';
+import { CreateAccountComponent } from './client-area/create-account/create-account.component';
+import { LoginUserComponent } from './client-area/login-user/login-user.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,9 @@ import { ContainerComponent } from './logged/container/container.component';
     HeaderComponent,
     HomePageComponent,
     CardProductComponent,
-    ContainerComponent
+    ContainerComponent,
+    CreateAccountComponent,
+    LoginUserComponent
   ],
   imports: [
     BrowserModule,

@@ -7,7 +7,7 @@
 .container{
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .container_button{
@@ -22,4 +22,21 @@ button{
 
 .img{
   margin-left: 20px;
+}
+
+.continer-description{
+  display: flex;
+}
+
+a{
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+  color: rgb(73, 97, 178);
 }
