@@ -1,8 +1,5 @@
-<<<<<<< Updated upstream
 import { Component, ViewChild } from '@angular/core';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> Stashed changes
+import { OnInit } from '@angular/core';
 import { Backoffice } from '../backoffice';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -40,15 +37,12 @@ export class ListUsersComponent  implements OnInit {
     public route: Router,
   ) {}
 
-<<<<<<< Updated upstream
   @ViewChild('slideToggle') slideToggle: MatSlideToggle;
 
   ngOnInit() {
     this.findUsers();
   }
 
-=======
->>>>>>> Stashed changes
   public findUsers() {
     const colaborador = {
       nome: this.listForm.value.nome
@@ -101,18 +95,5 @@ export class ListUsersComponent  implements OnInit {
   public listForm = new FormGroup({
     nome: new FormControl('')
   })
-
-  ngOnInit() : void{
-    const colaborador = {
-      nome: this.listForm.value.nome
-    } as ColaboradorForm;
-
-    this.service.list(colaborador).subscribe((listaUsers) => {
-      this.dataSourceList.data = listaUsers;
-    }, error => {
-      this.dataSourceList.data = [];
-    });
-
-  }
 
 }

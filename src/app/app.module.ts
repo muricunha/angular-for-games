@@ -75,6 +75,7 @@ import { ContainerComponent } from './logged/container/container.component';
   providers: [provideNgxMask(),
   MatSlideToggle,
   ListUsersComponent,
+  HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
