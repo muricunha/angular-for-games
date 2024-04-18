@@ -11,7 +11,7 @@
       <input matInput placeholder="Digite o nome do produto" formControlName="nome">
     </mat-form-field>
     <button mat-raised-button color="primary" class="button" (click)="findProduct()">Pesquisar</button>
-    <button mat-stroked-button color="primary" class="button" (click)="openDialogCreate()">Criar Produto</button>
+    <button mat-stroked-button color="primary" class="button" (click)="openDialogCreate()" [disabled]="(user$ | async)?.grupo?.includes('ESTOQ')">Criar Produto</button>
   </div>
 </form>
 <table mat-table class="mat-elevation-z8" [dataSource]="dataSourceList">

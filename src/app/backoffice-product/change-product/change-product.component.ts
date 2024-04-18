@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
+import { AuthenticationService } from 'src/app/auth/authentication.service';
 interface Avaliation {
   value: string;
   viewValue: string;
@@ -36,8 +37,11 @@ export class ChangeProductComponent {
     private route: ActivatedRoute,
     private dialogRef: MatDialogRef<ChangeProductComponent>,
     public snackBar: MatSnackBar,
+    private authenticationService: AuthenticationService,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: Product,
     ) {}
+
+    user$ = this.authenticationService.getUser();
 
     public changeProduct(){
       const request: Product = {

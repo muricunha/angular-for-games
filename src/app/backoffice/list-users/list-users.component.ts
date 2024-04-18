@@ -1,17 +1,11 @@
-
 import { Component, ViewChild, OnInit } from '@angular/core';
-
-
 import { Backoffice } from '../backoffice';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeUsersComponent } from './change-users/change-users.component';
 import { ModalOptions } from 'src/app/models/alert-confirm.model';
-import {
-  MatSlideToggle,
-  MatSlideToggleChange,
-} from '@angular/material/slide-toggle';
+import {MatSlideToggle, MatSlideToggleChange,} from '@angular/material/slide-toggle';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { CreateUserComponent } from '../create-user/create-user.component';
@@ -39,15 +33,14 @@ export class ListUsersComponent  implements OnInit {
     public route:     Router,
   ) {}
 
-
   @ViewChild('slideToggle') slideToggle: MatSlideToggle;
 
-  // ngOnInit() {
-  //   this.findUsers();
-  // }
+  ngOnInit() {
+    this.findUsers();
+  }
 
 
-  public findUsers() {
+  public findUsers() :void {
     const colaborador = {
       nome: this.listForm.value.nome
     } as ColaboradorForm;
@@ -95,22 +88,7 @@ export class ListUsersComponent  implements OnInit {
       }
     });
   }
-
   public listForm = new FormGroup({
     nome: new FormControl('')
-  })
-
-  ngOnInit() : void{
-    const colaborador = {
-      nome: this.listForm.value.nome
-    } as ColaboradorForm;
-
-    this.service.list(colaborador).subscribe((listaUsers) => {
-      this.dataSourceList.data = listaUsers;
-    }, error => {
-      this.dataSourceList.data = [];
-    });
-
-  }
-
+  });
 }

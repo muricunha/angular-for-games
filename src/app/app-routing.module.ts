@@ -11,6 +11,8 @@ import { ListProductComponent } from './backoffice-product/list-product/list-pro
 import { authGuardsGuard } from './guards/auth-guards.guard';
 import { DetailProductComponent } from './logged/detail-product/detail-product.component';
 import { HomePageComponent } from './logged/home-page/home-page.component';
+import { CreateAccountComponent } from './client-area/create-account/create-account.component';
+import { LoginUserComponent } from './client-area/login-user/login-user.component';
 
 
 const routes: Routes = [
@@ -48,6 +50,14 @@ const routes: Routes = [
   {
     path: 'produto',
     component: DetailProductComponent
+  },
+  {
+    path: 'cadastro-cliente',
+    component: CreateAccountComponent
+  },
+  {
+    path: 'login-user',
+    component: LoginUserComponent
   }
 ];
 
