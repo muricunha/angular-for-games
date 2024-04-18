@@ -1,8 +1,7 @@
-<<<<<<< Updated upstream
-import { Component, ViewChild } from '@angular/core';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> Stashed changes
+
+import { Component, ViewChild, OnInit } from '@angular/core';
+
+
 import { Backoffice } from '../backoffice';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -37,18 +36,17 @@ export class ListUsersComponent  implements OnInit {
   constructor(
     private service: ForgamesService,
     public dialog: MatDialog,
-    public route: Router,
+    public route:     Router,
   ) {}
 
-<<<<<<< Updated upstream
+
   @ViewChild('slideToggle') slideToggle: MatSlideToggle;
 
-  ngOnInit() {
-    this.findUsers();
-  }
+  // ngOnInit() {
+  //   this.findUsers();
+  // }
 
-=======
->>>>>>> Stashed changes
+
   public findUsers() {
     const colaborador = {
       nome: this.listForm.value.nome

@@ -10,7 +10,7 @@
         <br>
         <mat-form-field appearance="outline" class="senha">
           <mat-label>Senha</mat-label>
-          <input type="password" matInput placeholder="Digite sua senha" formControlName="senha" mask="0*" maxlength="8">
+          <input type="password" matInput placeholder="Digite sua senha" formControlName="senha"  maxlength="8">
         </mat-form-field>
         <button mat-raised-button color="primary" (click)="submit()" [disabled]="createForm.invalid">Login</button>
     </div>
