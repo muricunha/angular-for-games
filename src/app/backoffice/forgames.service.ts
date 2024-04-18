@@ -7,6 +7,7 @@ import { ModalAlterComponent } from './list-users/modal-alter/modal-alter.compon
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCreate } from './backoffice-create';
 import {ColaboradorForm} from "./list-users/list-users.component";
+import {CadastroClienteForm} from "../client-area/client-create";
 @Injectable({
   providedIn: 'root',
 })
@@ -47,5 +48,8 @@ export class ForgamesService {
     return this.http.post<ModalCreate>(url, request)
   }
 
-
+  public cadastrarCliente(request: CadastroClienteForm): Observable<CadastroClienteForm> {
+    const url = `${this.API}/usuario/salvar`;
+    return this.http.post<CadastroClienteForm>(url, request)
+  }
 }

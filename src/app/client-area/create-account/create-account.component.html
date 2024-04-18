@@ -20,7 +20,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>CPF</mat-label>
-          <input matInput formControlName="cpf">
+          <input matInput formControlName="cpf" mask="000.000.000-00" (change)="checkIsCpfValid()">
         </mat-form-field>
       </div>
       <div class="container-data">
@@ -69,7 +69,9 @@
           <input matInput formControlName="uf" maxlength="2">
         </mat-form-field>
       </div>
-      <button mat-raised-button color="primary">Cadastrar</button>
+      <mat-dialog-actions align="end">
+      <button mat-raised-button color="primary" (click)="sendCreate()">Cadastrar</button>
+      </mat-dialog-actions>
     </form>
 
 
