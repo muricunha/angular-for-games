@@ -17,3 +17,8 @@ export interface EnderecoForm {
   cidade: string,
   uf: string
 }
+
+export interface LoginCliente {
+  email: string,
+  senha: string
+}

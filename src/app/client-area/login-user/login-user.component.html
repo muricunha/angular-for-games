@@ -1,1 +1,21 @@
-<p>login-user works!</p>
+<app-header></app-header>
+<app-container>
+  <div>
+    <form class="login-form" [formGroup]="createForm">
+      <div class="description">
+      <h1>Fazer Login</h1>
+        <mat-form-field appearance="outline" class="usuario">
+          <mat-label>Usuário</mat-label>
+          <input matInput placeholder="Digite seu usuário" formControlName="usuario">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="outline" class="senha">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput placeholder="Digite sua senha" formControlName="senha">
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="loginUser()"  [disabled]="createForm.invalid">Login</button>
+    </div>
+    </form>
+    </div>
+</app-container>
+
