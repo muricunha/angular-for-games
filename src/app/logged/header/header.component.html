@@ -1,8 +1,7 @@
 <header class="container">
   <img src="../../../assets/logoFourGames.png" alt="logo four games" width="120px" height="120px">
   <div class="container_button">
-    <a routerLink="" class="data">Meus Dados</a>
-    <div class="continer-description">
+    <div class="continer-description" *ngIf="logged === null">
       <img src="../../../assets/user-avatar.png" width="36px" height="36px">
       <span>
         Faça
@@ -13,7 +12,15 @@
         <a href="" routerLink="/cadastro-cliente">CADASTRO</a>
       </span>
     </div>
-
+    <div class="continer-description--logged" *ngIf="logged">
+      <img src="../../../assets/user-avatar.png" width="36px" height="36px">
+      <span>
+        Olá, {{nomeUsuario}}
+        <br>
+        <a routerLink="/dados-pessoais">MEUS DADOS</a> |
+        <a (click)="logout()" class="cursor-sair">SAIR</a>
+      </span>
+    </div>
     <img src="../../../assets/ph_basket.png" alt="" class="img">
   </div>
 </header>

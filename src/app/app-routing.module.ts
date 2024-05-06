@@ -13,6 +13,7 @@ import { DetailProductComponent } from './logged/detail-product/detail-product.c
 import { HomePageComponent } from './logged/home-page/home-page.component';
 import { CreateAccountComponent } from './client-area/create-account/create-account.component';
 import { LoginUserComponent } from './client-area/login-user/login-user.component';
+import { ChangeClientComponent } from './client-area/change-client/change-client.component';
 
 
 const routes: Routes = [
@@ -43,6 +44,7 @@ const routes: Routes = [
     path: 'listarProduto',
     component: ListProductComponent,
   },
+  // área do cliente
   {
     path: 'inicio',
     component: HomePageComponent
@@ -58,6 +60,10 @@ const routes: Routes = [
   {
     path: 'login-user',
     component: LoginUserComponent
+  },
+  {
+    path: 'dados-pessoais',
+    component: ChangeClientComponent
   }
 ];
 

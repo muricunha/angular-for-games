@@ -14,7 +14,6 @@ export class HomePageComponent {
 
  ngOnInit(){
   this.searchProducts();
-  console.log(this.searchProducts())
  }
 
  public searchProducts(): void{

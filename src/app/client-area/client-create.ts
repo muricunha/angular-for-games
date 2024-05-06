@@ -1,7 +1,6 @@
 export interface CadastroClienteForm {
   nome: string,
   email: string,
-  grupo: string,
   cpf: string,
   genero: string,
   senha: string,
@@ -21,4 +20,9 @@ export interface EnderecoForm {
 export interface LoginCliente {
   email: string,
   senha: string
+}
+
+export interface ViewSession {
+  id:number;
+  nome: string
 }
