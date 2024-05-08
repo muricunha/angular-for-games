@@ -2,7 +2,32 @@
 <app-container>
   <h1>Meus dados</h1>
   <div class="container">
-    <div class="container-1 mat-elevation-z4"></div>
+    <div class="container-1 mat-elevation-z4">
+      <div class="box-1">
+        <h1>Alteração de Dados Básicos</h1>
+      <form action="" [formGroup]="formClient">
+        <section class="alter-change">
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="nome" maxlength="25">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Data de Nascimento</mat-label>
+            <input matInput formControlName="nascimento" maxlength="25">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Gênero</mat-label>
+            <input matInput formControlName="genero" maxlength="25">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input matInput formControlName="senha" maxlength="25">
+          </mat-form-field>
+          <button mat-raised-button color="primary" class="button-save" (click)="editUsers()">Salvar Alterações</button>
+        </section>
+      </form>
+    </div>
+      </div>
     <div class="container-2 mat-elevation-z4"></div>
   </div>
 

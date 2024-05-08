@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as CryptoJS from "crypto-js";
 import {CadastroClienteForm} from "../../client-area/client-create";
@@ -7,6 +7,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 
 import {CreateUserComponent} from "../../backoffice/create-user/create-user.component";
 import { Route, Router } from '@angular/router';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-create-account',
@@ -17,11 +18,14 @@ export class CreateAccountComponent {
   isValid: boolean = false;
   isInvalid: boolean = false;
   isCpfValid: boolean = false;
+  @Output() dadosSalvos = new EventEmitter<any>();
   public createForm: FormGroup;
 
-  constructor(public service: ForgamesService,
-              public snackBar: MatSnackBar,
-            private router: Router) {
+  constructor(
+    public service: ForgamesService,
+    public snackBar: MatSnackBar,
+    private router: Router,
+    private clientService: ClientService) {
   }
 
   ngOnInit(){
@@ -73,6 +77,7 @@ export class CreateAccountComponent {
       const request: CadastroClienteForm = {
         nome: this.createForm.get('nome')?.value,
         email: this.createForm.get('email')?.value,
+        nascimento: this.createForm.get('nascimento')?.value,
         cpf: this.createForm.get('cpf')?.value,
         genero: this.createForm.get('genero')?.value,
         senha: this.createForm.get('senha')?.value,
@@ -89,6 +94,7 @@ export class CreateAccountComponent {
       this.service.cadastrarCliente(request).subscribe((r) => {
         console.log(request)
         this.openSnackBar();
+        this.dadosSalvos.emit(request);
         this.router.navigate(['/login-user'])
       })
     }

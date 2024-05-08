@@ -15,7 +15,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { ChangeUsersComponent } from './backoffice/list-users/change-users/change-users.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-alter.component';
@@ -76,12 +76,14 @@ import { ChangeClientComponent } from './client-area/change-client/change-client
     CommonModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,
   ListUsersComponent,
-  HttpClientModule
+  HttpClientModule,
+  MatDialog
   ],
   bootstrap: [AppComponent]
 })

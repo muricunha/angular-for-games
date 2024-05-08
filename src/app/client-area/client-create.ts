@@ -1,10 +1,12 @@
 export interface CadastroClienteForm {
+  id?: number,
   nome: string,
-  email: string,
-  cpf: string,
+  email?: string,
+  nascimento: string,
+  cpf?: string,
   genero: string,
   senha: string,
-  endereco: Array<EnderecoForm>
+  endereco?: Array<EnderecoForm>
 }
 
 export interface EnderecoForm {
