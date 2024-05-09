@@ -18,21 +18,17 @@ export interface EnderecoForm {
   cidade: string,
   uf: string
 }
-
-<<<<<<< HEAD
 export interface CartaoForm {
   nome: string,
   validade: string,
   numero: string,
   seguranca: string
-=======
+}
 export interface LoginCliente {
   email: string,
   senha: string
 }
-
 export interface ViewSession {
-  id:number;
+  id: number;
   nome: string
->>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
 }

@@ -33,12 +33,10 @@ import { CardProductComponent } from './logged/card-product/card-product.compone
 import {MatCardModule} from '@angular/material/card';
 import { ContainerComponent } from './logged/container/container.component';
 import { CreateAccountComponent } from './client-area/create-account/create-account.component';
-import { LoginUserComponent } from './client-area/login-user/login-user.component';
-<<<<<<< HEAD
+import { LoginUserComponent } from './client-area/login-user/login-user.component'
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
-=======
 import { ChangeClientComponent } from './client-area/change-client/change-client.component';
->>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,11 +57,8 @@ import { ChangeClientComponent } from './client-area/change-client/change-client
     ContainerComponent,
     CreateAccountComponent,
     LoginUserComponent,
-<<<<<<< HEAD
-    CreditCardComponent
-=======
+    CreditCardComponent,
     ChangeClientComponent
->>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
   ],
   imports: [
     BrowserModule,
