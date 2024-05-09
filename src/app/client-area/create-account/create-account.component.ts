@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import * as CryptoJS from "crypto-js";
-import {CadastroClienteForm} from "../../client-area/client-create";
+import {CadastroClienteForm} from "../client-create";
 import {ForgamesService} from "../../backoffice/forgames.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-
-import {CreateUserComponent} from "../../backoffice/create-user/create-user.component";
+import { Route, Router } from '@angular/router';
+import { ClientService } from '../client.service';
 
 @Component({
   selector: 'app-create-account',
@@ -16,10 +16,14 @@ export class CreateAccountComponent {
   isValid: boolean = false;
   isInvalid: boolean = false;
   isCpfValid: boolean = false;
+  @Output() dadosSalvos = new EventEmitter<any>();
   public createForm: FormGroup;
 
-  constructor(public service: ForgamesService,
-              public snackBar: MatSnackBar) {
+  constructor(
+    public service: ForgamesService,
+    public snackBar: MatSnackBar,
+    private router: Router,
+    private clientService: ClientService) {
   }
 
   ngOnInit(){
@@ -65,16 +69,16 @@ export class CreateAccountComponent {
   public sendCreate(): void {
     const senha = this.createForm.get('password')?.value;
 
-    let encriptSenha = CryptoJS.SHA256(senha).toString();
+    // let encriptSenha = CryptoJS.SHA256(senha).toString();
 
     if (this.isCpfValid) {
       const request: CadastroClienteForm = {
         nome: this.createForm.get('nome')?.value,
         email: this.createForm.get('email')?.value,
-        grupo: this.createForm.get('grupo')?.value,
+        nascimento: this.createForm.get('nascimento')?.value,
         cpf: this.createForm.get('cpf')?.value,
         genero: this.createForm.get('genero')?.value,
-        senha: encriptSenha,
+        senha: this.createForm.get('senha')?.value,
         endereco: [{
           endereco: this.createForm.get('endereco')?.value,
           cep: this.createForm.get('cep')?.value,
@@ -85,10 +89,11 @@ export class CreateAccountComponent {
           uf: this.createForm.get('uf')?.value,
         }]
       }
-      debugger;
       this.service.cadastrarCliente(request).subscribe((r) => {
         console.log(request)
         this.openSnackBar();
+        this.dadosSalvos.emit(request);
+        this.router.navigate(['/login-user'])
       })
     }
   }

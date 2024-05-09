@@ -28,6 +28,14 @@ button{
   display: flex;
 }
 
+.continer-description--logged{
+  display: flex;
+}
+
+.cursor-sair{
+  cursor: pointer;
+}
+
 a{
   font-size: 0.75rem;
   line-height: 1.125rem;
@@ -40,3 +48,12 @@ a:hover{
   text-decoration: underline;
   color: rgb(73, 97, 178);
 }
+
+.data{
+  margin-right: 30px;
+  font-weight: 500;
+  align-items: center;
+  font-size: 16px;
+  text-decoration: none;
+}
+

@@ -15,7 +15,7 @@ import {HttpClientModule } from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatSlideToggle, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { ChangeUsersComponent } from './backoffice/list-users/change-users/change-users.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { ModalAlterComponent } from './backoffice/list-users/modal-alter/modal-alter.component';
@@ -34,7 +34,11 @@ import {MatCardModule} from '@angular/material/card';
 import { ContainerComponent } from './logged/container/container.component';
 import { CreateAccountComponent } from './client-area/create-account/create-account.component';
 import { LoginUserComponent } from './client-area/login-user/login-user.component';
+<<<<<<< HEAD
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
+=======
+import { ChangeClientComponent } from './client-area/change-client/change-client.component';
+>>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +59,11 @@ import {CreditCardComponent} from "./client-area/credit-card/credit-card.compone
     ContainerComponent,
     CreateAccountComponent,
     LoginUserComponent,
+<<<<<<< HEAD
     CreditCardComponent
+=======
+    ChangeClientComponent
+>>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
   ],
   imports: [
     BrowserModule,
@@ -76,12 +84,14 @@ import {CreditCardComponent} from "./client-area/credit-card/credit-card.compone
     CommonModule,
     MatSelectModule,
     MatSnackBarModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,
   ListUsersComponent,
-  HttpClientModule
+  HttpClientModule,
+  MatDialog
   ],
   bootstrap: [AppComponent]
 })

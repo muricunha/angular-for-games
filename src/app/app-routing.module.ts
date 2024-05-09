@@ -13,7 +13,11 @@ import { DetailProductComponent } from './logged/detail-product/detail-product.c
 import { HomePageComponent } from './logged/home-page/home-page.component';
 import { CreateAccountComponent } from './client-area/create-account/create-account.component';
 import { LoginUserComponent } from './client-area/login-user/login-user.component';
+<<<<<<< HEAD
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
+=======
+import { ChangeClientComponent } from './client-area/change-client/change-client.component';
+>>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
 
 
 const routes: Routes = [
@@ -33,8 +37,8 @@ const routes: Routes = [
   {
     path: 'listarUsuarios',
     component: ListUsersComponent,
-    canActivate: [authGuardsGuard],
-    data: {grupo: 'ADMIN'}
+    // canActivate: [authGuardsGuard],
+    // data: {grupo: 'ADMIN'}
   },
   {
     path: 'editarUsuarios',
@@ -44,6 +48,7 @@ const routes: Routes = [
     path: 'listarProduto',
     component: ListProductComponent,
   },
+  // área do cliente
   {
     path: 'inicio',
     component: HomePageComponent
@@ -61,8 +66,13 @@ const routes: Routes = [
     component: LoginUserComponent
   },
   {
+<<<<<<< HEAD
     path: 'credit-card',
     component: CreditCardComponent
+=======
+    path: 'dados-pessoais',
+    component: ChangeClientComponent
+>>>>>>> f4db85e7cd9b2c0137846be2cd2adf93266f8091
   }
 ];
 

@@ -1,0 +1,29 @@
+.mat-elevation-z4 {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container-1, .container-2 {
+  width: 600px;
+  height: 520px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.container{
+  display: flex;
+}
+
+.alter-change{
+display: flex;
+flex-direction: column;
+}
+
+.button-save{
+  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+mat-form-field{
+  width: 100%;
+}
