@@ -13,6 +13,7 @@ import { DetailProductComponent } from './logged/detail-product/detail-product.c
 import { HomePageComponent } from './logged/home-page/home-page.component';
 import { CreateAccountComponent } from './client-area/create-account/create-account.component';
 import { LoginUserComponent } from './client-area/login-user/login-user.component';
+import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
 
 
 const routes: Routes = [
@@ -58,6 +59,10 @@ const routes: Routes = [
   {
     path: 'login-user',
     component: LoginUserComponent
+  },
+  {
+    path: 'credit-card',
+    component: CreditCardComponent
   }
 ];
 

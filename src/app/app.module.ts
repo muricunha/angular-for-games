@@ -34,6 +34,7 @@ import {MatCardModule} from '@angular/material/card';
 import { ContainerComponent } from './logged/container/container.component';
 import { CreateAccountComponent } from './client-area/create-account/create-account.component';
 import { LoginUserComponent } from './client-area/login-user/login-user.component';
+import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +54,8 @@ import { LoginUserComponent } from './client-area/login-user/login-user.componen
     CardProductComponent,
     ContainerComponent,
     CreateAccountComponent,
-    LoginUserComponent
+    LoginUserComponent,
+    CreditCardComponent
   ],
   imports: [
     BrowserModule,

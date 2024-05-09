@@ -38,14 +38,14 @@
       <input type="file" (change)="onFileSelected($event)">
     </div>
   </section>
-  <!-- <section>
-    <div>
-      <input type="file" multiple formControlName="foto" (change)="selectFiles($event)">
-    </div>
-    <div *ngFor="let msg of message" class="photos-container">
-      <img [src]="message" [alt]="message" class="photos">
-    </div>
-  </section> -->
+<!--  <section>-->
+<!--    <div>-->
+<!--      <input type="file" multiple formControlName="foto" (change)="selectFiles($event)">-->
+<!--    </div>-->
+<!--    <div *ngFor="let msg of message" class="photos-container">-->
+<!--      <img [src]="message" [alt]="message" class="photos">-->
+<!--    </div>-->
+<!--  </section>-->
   <mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close>Cancelar</button>
     <button type="submit" mat-button color="primary" (click)="createProduto()" [disabled]="createForm.invalid">Criar</button>

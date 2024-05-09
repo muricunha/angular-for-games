@@ -17,3 +17,10 @@ export interface EnderecoForm {
   cidade: string,
   uf: string
 }
+
+export interface CartaoForm {
+  nome: string,
+  validade: string,
+  numero: string,
+  seguranca: string
+}
