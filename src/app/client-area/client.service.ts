@@ -1,13 +1,13 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CadastroClienteForm, LoginCliente, ViewSession } from './client-create';
+import { CadastroClienteForm, EnderecoForm, LoginCliente, ViewSession } from './client-create';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ClientService {
-  public changeData: CadastroClienteForm;
+  public changeData: any;
   private readonly API = 'http://localhost:8081';
   constructor(public http: HttpClient) { }
 
@@ -21,7 +21,17 @@ export class ClientService {
     return this.http.put<CadastroClienteForm>(url, user);
   }
 
-  public setDados(changeData: CadastroClienteForm){
+  public salvarEndereco(request: EnderecoForm): Observable<EnderecoForm> {
+    const url = `${this.API}/endereco/salvar`;
+    return this.http.post<EnderecoForm>(url, request)
+  }
+
+  public listarEndereco(id: number): Observable<EnderecoForm> {
+    const url = `${this.API}/endereco/listar/${id}`;
+    return this.http.get<EnderecoForm>(url);
+  }
+
+  public setDados(changeData: any){
     this.changeData = changeData;
   }
   public getDados(){

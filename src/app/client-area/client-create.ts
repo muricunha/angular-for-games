@@ -10,7 +10,7 @@ export interface CadastroClienteForm {
 }
 
 export interface EnderecoForm {
-  endereco: string,
+  logradouro: string,
   cep: string,
   numero: string,
   complemento: string,
@@ -29,6 +29,11 @@ export interface LoginCliente {
   senha: string
 }
 export interface ViewSession {
-  id: number;
-  nome: string
+  id:number,
+  nome: string,
+  genero: string,
+  nascimento: string,
+  senha: string,
+  endereco: Array<EnderecoForm>
+
 }
