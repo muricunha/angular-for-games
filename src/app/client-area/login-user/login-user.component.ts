@@ -36,8 +36,22 @@ export class LoginUserComponent {
       if (response.status === 200) {
       const session =  sessionStorage.setItem("clienteLogado", JSON.stringify({
           id: response.body?.id,
-          usuario: response.body?.nome
+          usuario: response.body?.nome,
+          genero: response.body?.genero,
+          nascimento: response.body?.nascimento,
+          senha: response.body?.senha,
+          endereco: response.body?.endereco.map(endereco => ({
+            logradouro: endereco.logradouro,
+            cep: endereco.cep,
+            numero: endereco.numero,
+            complemento: endereco.complemento,
+            bairro: endereco.bairro,
+            cidade: endereco.cidade,
+            uf: endereco.uf
+          }))
+
         }));
+        console.log('testeeee',response.body?.senha)
 
         this.router.navigate(['/inicio']);
       }

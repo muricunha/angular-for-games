@@ -16,7 +16,7 @@ export class CreateAccountComponent {
   isValid: boolean = false;
   isInvalid: boolean = false;
   isCpfValid: boolean = false;
-  @Output() dadosSalvos = new EventEmitter<any>();
+  @Output() dadosSalvos = new EventEmitter<CadastroClienteForm>();
   public createForm: FormGroup;
 
   constructor(
@@ -34,7 +34,7 @@ export class CreateAccountComponent {
       cpf: new FormControl('', [Validators.required]),
       genero: new FormControl('', [Validators.required]),
       senha: new FormControl('', [Validators.required]),
-      endereco: new FormControl('', [Validators.required]),
+      logradouro: new FormControl('', [Validators.required]),
       cep: new FormControl('', [Validators.required]),
       numero: new FormControl('', [Validators.required]),
       complemento: new FormControl('', [Validators.required]),
@@ -80,7 +80,7 @@ export class CreateAccountComponent {
         genero: this.createForm.get('genero')?.value,
         senha: this.createForm.get('senha')?.value,
         endereco: [{
-          endereco: this.createForm.get('endereco')?.value,
+          logradouro: this.createForm.get('logradouro')?.value,
           cep: this.createForm.get('cep')?.value,
           numero: this.createForm.get('numero')?.value,
           complemento: this.createForm.get('complemento')?.value,
@@ -90,9 +90,9 @@ export class CreateAccountComponent {
         }]
       }
       this.service.cadastrarCliente(request).subscribe((r) => {
-        console.log(request)
+        console.log('teste 1',request)
+        console.log(r)
         this.openSnackBar();
-        this.dadosSalvos.emit(request);
         this.router.navigate(['/login-user'])
       })
     }
