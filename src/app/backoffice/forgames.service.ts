@@ -54,7 +54,7 @@ export class ForgamesService {
   }
 
   public cadastrarCartao(request: CartaoForm): Observable<CartaoForm> {
-    const url = `${this.API}/usuario/salvar`;
+    const url = `${this.API}/cartao/salvar`;
     return this.http.post<CartaoForm>(url, request)
   }
 }

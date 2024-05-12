@@ -21,8 +21,8 @@ export class CreditCardComponent {
     this.createForm = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       validade: new FormControl('', [Validators.required]),
-      nascimento: new FormControl('', [Validators.required]),
-      cpf: new FormControl('', [Validators.required]),
+      numero: new FormControl('', [Validators.required]),
+      seguranca: new FormControl('', [Validators.required]),
     })
   }
 
