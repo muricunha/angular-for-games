@@ -1,0 +1,47 @@
+*{
+    font-family: 'inter', sans-serif;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  header{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+
+  header img {
+    justify-content: flex-start;
+  }
+
+  header h1{
+    font-weight: 500;
+  }
+
+  .header-title{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+  }
+
+  mat-form-field{
+    width: 50%;
+    color: #F36104;
+  }
+
+  .flex-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button{
+    padding: 10px 20px;
+    margin: 0px 0px 20px 20px;
+  }
+  .mat-elevation-z8{
+    min-width: 90%;
+    margin: 0 auto;
+  }

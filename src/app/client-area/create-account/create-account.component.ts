@@ -123,4 +123,9 @@ export class CreateAccountComponent {
       this.isInvalid = true;
     }
   }
+
+  public validaCEP(){
+
+
+  }
 }

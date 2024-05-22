@@ -42,7 +42,7 @@
       <div class="container-data">
         <mat-form-field appearance="outline">
           <mat-label>CEP</mat-label>
-          <input matInput formControlName="cep">
+          <input matInput formControlName="cep" (blur)="validaCEP()">
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Número</mat-label>

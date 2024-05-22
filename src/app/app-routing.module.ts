@@ -17,6 +17,7 @@ import { LoginUserComponent } from './client-area/login-user/login-user.componen
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
 
 import { ChangeClientComponent } from './client-area/change-client/change-client.component';
+import {ListOrdersComponent} from "./backoffice-product/list-orders/list-orders.component";
 
 
 
@@ -72,6 +73,11 @@ const routes: Routes = [
   {
     path: 'dados-pessoais',
     component: ChangeClientComponent
+  },
+
+  {
+    path: 'list-orders',
+    component: ListOrdersComponent
   }
 ];
 

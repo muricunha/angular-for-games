@@ -72,19 +72,6 @@ export class CreateProductComponent {
 
   }
 
-  // public selectFiles(event: any): void {
-  //   this.selectedFiles = [];
-  //
-  //   if(event.target.files.length === 0){
-  //     return;
-  //   }
-  //
-  //   for(let i = 0; i < event.target.files.length; i++){
-  //     this.selectedFiles.push(event.target.files[i])
-  //     console.log(this.selectedFiles)
-  //   }
-  // }
-
   public uploadFiles(): void{
 
     if(!this.selectedFiles || this.selectedFiles.length === 0){
