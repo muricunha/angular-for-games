@@ -19,7 +19,7 @@ interface Avaliation {
 export class CreateProductComponent {
   public createForm: FormGroup;
   public message: string[] = [];
-  public selectedFiles? : Array<FileList>;
+  public selectedFiles?: Array<FileList>;
   star: Avaliation[] = [
     {value: '0.5', viewValue: '0.5'},
     {value: '1', viewValue: '1'},
@@ -33,6 +33,7 @@ export class CreateProductComponent {
     {value: '5', viewValue: '5'},
   ];
   file: File;
+
   constructor(public productService: ProductService,
               private dialogRef: MatDialogRef<CreateProductComponent>,
               private snackBar: MatSnackBar) {
@@ -72,9 +73,10 @@ export class CreateProductComponent {
 
   }
 
-  public uploadFiles(): void{
 
-    if(!this.selectedFiles || this.selectedFiles.length === 0){
+
+  public uploadFiles(): void {
+    if (!this.selectedFiles || this.selectedFiles.length === 0) {
       return;
     }
 
@@ -87,8 +89,8 @@ export class CreateProductComponent {
     this.upload(formData)
   }
 
-  public upload( file: any): void {
-    if(file){
+  public upload(file: any): void {
+    if (file) {
       this.productService.upload(file).subscribe((event: any) => {
       })
     }
@@ -103,6 +105,15 @@ export class CreateProductComponent {
   }
 
   async salvarFoto(): Promise<string | any> {
-    return axios.post<string>('http://localhost:8081/produto/salvarImagem', this.file);
+    return axios.post<string>(
+      'http://localhost:8081/produto/salvarImagem',
+      {
+        imagem: this.file
+      },
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
   }
 }
