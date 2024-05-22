@@ -33,6 +33,7 @@ export class CreateProductComponent {
     {value: '5', viewValue: '5'},
   ];
   file: File;
+  imageUrl: string = '';
 
   constructor(public productService: ProductService,
               private dialogRef: MatDialogRef<CreateProductComponent>,
@@ -63,7 +64,21 @@ export class CreateProductComponent {
       qtdEstoque: this.createForm.get('estoque')?.value,
       caminhoImagem: ''
     }
-    this.salvarFoto();
+    // this.salvarFoto();
+
+
+      this.salvarFoto()
+        .then((response) => {
+          console.log('Resposta da requisição:', response);
+          if (response && response.data) {
+            this.imageUrl = response.data;
+          }
+        })
+        .catch((error) => {
+          console.error('Erro ao salvar a foto', error);
+        });
+
+
 
     this.productService.criarProduto(request).subscribe(() => {
       console.log(request);
@@ -72,19 +87,6 @@ export class CreateProductComponent {
     })
 
   }
-
-  // public selectFiles(event: any): void {
-  //   this.selectedFiles = [];
-  //
-  //   if(event.target.files.length === 0){
-  //     return;
-  //   }
-  //
-  //   for(let i = 0; i < event.target.files.length; i++){
-  //     this.selectedFiles.push(event.target.files[i])
-  //     console.log(this.selectedFiles)
-  //   }
-  // }
 
   public uploadFiles(): void {
 
