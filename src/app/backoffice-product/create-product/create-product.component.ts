@@ -89,7 +89,6 @@ export class CreateProductComponent {
   }
 
   public uploadFiles(): void {
-
     if (!this.selectedFiles || this.selectedFiles.length === 0) {
       return;
     }
