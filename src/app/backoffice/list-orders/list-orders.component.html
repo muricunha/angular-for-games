@@ -1,0 +1,46 @@
+<header>
+    <img src="../../../assets/logoFourGames.png" alt="logo four games" width="150px" height="150px">
+    <div class="header-title">
+      <h1>Lista de Pedidos</h1>
+    </div>
+  </header>
+<form action="" [formGroup]="listProduct">
+  <div class="flex-container">
+    <mat-form-field class="input-container" appearance="outline">
+      <mat-label>Cliente</mat-label>
+      <input matInput placeholder="Digite o nome do cliente" formControlName="nome">
+    </mat-form-field>
+    <button mat-raised-button color="primary" class="button" (click)="findOrders()">Pesquisar</button>
+  </div>
+</form>
+<table mat-table class="mat-elevation-z8" [dataSource]="dataSourceList">
+
+  <ng-container matColumnDef="id" [class.hidden]="true">
+    <th mat-header-cell class="custom-title" *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="numeroPedido">
+    <th mat-header-cell class="custom-title" *matHeaderCellDef> Número do Pedido </th>
+    <td mat-cell *matCellDef="let element"> {{element.codigoProduto}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="valor">
+    <th mat-header-cell class="custom-title" *matHeaderCellDef>Valor</th>
+    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="data">
+    <th mat-header-cell class="custom-title" *matHeaderCellDef>Data</th>
+    <td mat-cell *matCellDef="let element">{{element.avaliacao}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell class="custom-title" *matHeaderCellDef>Status do Pedido</th>
+    <td mat-cell *matCellDef="let element">{{element.preco}}</td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

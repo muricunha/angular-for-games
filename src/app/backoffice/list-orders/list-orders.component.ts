@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CreateProductComponent } from '../create-product/create-product.component';
+import { CreateProductComponent } from '../../backoffice-product/create-product/create-product.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Product, ProductForm } from '../product';
+import { Product, ProductForm } from '../../backoffice-product/product';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ModalOptions } from 'src/app/models/alert-confirm.model';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
-import { ChangeProductComponent } from '../change-product/change-product.component';
-import { ProductService } from '../product.service';
+import { ChangeProductComponent } from '../../backoffice-product/change-product/change-product.component';
+import { ProductService } from '../../backoffice-product/product.service';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 @Component({
@@ -27,14 +27,10 @@ export class ListOrdersComponent {
 
   public dataSourceList = new MatTableDataSource<Product>();
   displayedColumns: string[] = [
-    'codigoProduto',
-    'nome',
-    'avaliacao',
-    'preco',
-    'qtdEstoque',
-    'alterar',
-    'status',
-    'button',
+    'numeroPedido',
+    'valor',
+    'data',
+    'status'
   ];
 
   constructor(
@@ -49,10 +45,10 @@ export class ListOrdersComponent {
     this.listProduct = new FormGroup({
       nome: new FormControl(''),
     });
-    this.findProduct();
+    this.findOrders();
   }
 
-  public findProduct() {
+  public findOrders() {
     const nomeProduto = this.listProduct.value.nome;
     const productForm = {
       nome: nomeProduto,

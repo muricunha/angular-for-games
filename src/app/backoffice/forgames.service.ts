@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Backoffice} from './backoffice';
+import {Backoffice, ListOrder, ListOrderForm} from './backoffice';
 import { Observable, map } from 'rxjs';
 import { ModalAnswer, ModalOptions } from '../models/alert-confirm.model';
 import { ModalAlterComponent } from './list-users/modal-alter/modal-alter.component';
@@ -56,5 +56,9 @@ export class ForgamesService {
   public cadastrarCartao(request: CartaoForm): Observable<CartaoForm> {
     const url = `${this.API}/cartao/salvar`;
     return this.http.post<CartaoForm>(url, request)
+  }
+
+  public listOrders(listOrderForm: ListOrderForm): Observable<ListOrder[]> {
+    return this.http.post<ListOrder[]>(`${this.API}/pedido/listar`, listOrderForm);
   }
 }

@@ -36,7 +36,7 @@ import { CreateAccountComponent } from './client-area/create-account/create-acco
 import { LoginUserComponent } from './client-area/login-user/login-user.component'
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
 import { ChangeClientComponent } from './client-area/change-client/change-client.component';
-import {ListOrdersComponent} from "./backoffice-product/list-orders/list-orders.component";
+import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.component";
 
 @NgModule({
   declarations: [

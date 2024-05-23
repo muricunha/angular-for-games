@@ -17,3 +17,13 @@ export interface LoginView {
   grupo: string;
 }
 
+export interface ListOrder {
+  id: number;
+  data: string;
+  valor: number;
+  status: string;
+}
+
+export interface ListOrderForm{
+  nome: string;
+}
