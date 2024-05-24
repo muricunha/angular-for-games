@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {Backoffice, ListOrder, ListOrderForm} from './backoffice';
 import { Observable, map } from 'rxjs';
@@ -58,7 +58,7 @@ export class ForgamesService {
     return this.http.post<CartaoForm>(url, request)
   }
 
-  public listOrders(listOrderForm: ListOrderForm): Observable<ListOrder[]> {
-    return this.http.post<ListOrder[]>(`${this.API}/pedido/listar`, listOrderForm);
+  public listOrders(listOrdersForm: ListOrderForm): Observable<ListOrderForm> {
+    return this.http.post<ListOrderForm>(`${this.API}/pedido/listarPorNome/`, listOrdersForm);
   }
 }

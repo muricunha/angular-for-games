@@ -1,16 +1,14 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { CreateProductComponent } from '../../backoffice-product/create-product/create-product.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Product, ProductForm } from '../../backoffice-product/product';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { ModalOptions } from 'src/app/models/alert-confirm.model';
 import { ForgamesService } from 'src/app/backoffice/forgames.service';
-import { ChangeProductComponent } from '../../backoffice-product/change-product/change-product.component';
-import { ProductService } from '../../backoffice-product/product.service';
 import { AuthenticationService } from 'src/app/auth/authentication.service';
+import {ListOrder, ListOrderForm} from "../backoffice";
 
+interface Status {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-list-orders',
   templateUrl: './list-orders.component.html',
@@ -19,82 +17,49 @@ import { AuthenticationService } from 'src/app/auth/authentication.service';
 
 
 export class ListOrdersComponent {
-  public listProduct: FormGroup
-  public nameChange: string = 'Ativo';
-  public isChecked: boolean = true;
-  public toggleState: boolean = false;
-  public isActive: boolean = false;
+  public listOrders : FormGroup
 
-  public dataSourceList = new MatTableDataSource<Product>();
+
+  public dataSourceList = new MatTableDataSource<ListOrder>();
   displayedColumns: string[] = [
     'numeroPedido',
     'valor',
-    'data',
+    'dataPedido',
     'status'
   ];
 
+  status: Status [] = [
+    {value: 'AGUARDANDO_APROVACAO', viewValue:'Aguardando aprovação'},
+    {value: 'EM_ANDAMENTO', viewValue:'Em andamento'},
+    {value: 'CONCLUIDO', viewValue:'Concluído'}
+  ]
+
   constructor(
-    private dialog: MatDialog,
-    private service: ForgamesService,
-    private serviceProduct: ProductService,
+    private serviceListOrders: ForgamesService,
     private authenticationService: AuthenticationService
   ) {}
   user$ = this.authenticationService.getUser();
 
   ngOnInit() {
-    this.listProduct = new FormGroup({
+    this.listOrders = new FormGroup({
       nome: new FormControl(''),
     });
     this.findOrders();
   }
 
   public findOrders() {
-    const nomeProduto = this.listProduct.value.nome;
-    const productForm = {
-      nome: nomeProduto,
-    } as ProductForm;
+    const nomeCliente = this.listOrders.value.nome;
+    const listOrdersForm = {
+      nome: nomeCliente,
+    } as ListOrderForm;
 
-    this.serviceProduct.listProduct(productForm).subscribe(
-      (listProduct) => {
-        this.dataSourceList.data = listProduct;
+    this.serviceListOrders.listOrders(listOrdersForm).subscribe(
+      (listOrders) => {
+        this.dataSourceList.data = listOrders;
       },
       (error) => {
         this.dataSourceList.data = [];
       }
     );
-  }
-
-  public openDialogCreate(): void {
-    this.dialog.open(CreateProductComponent, {
-      width: '1000px',
-    });
-  }
-
-  public openDialog(value: Product): void {
-    this.dialog.open(ChangeProductComponent, {
-      width: '1000px',
-      data: value,
-    });
-  }
-
-  public onSlideToggleChange(event: MatSlideToggleChange): void {
-    const confirmOption: ModalOptions = {
-      dialogMessage: {
-        message: 'Deseja Alterar o status do Usuário?',
-      },
-    };
-
-    this.service.openConfirmModal(confirmOption).subscribe((confirm) => {
-      if (confirm.answer === 'yes') {
-        this.isActive = this.toggleState;
-        if (this.isActive === true) {
-          this.nameChange = 'Ativo';
-        } else {
-          this.nameChange = 'Inativo';
-        }
-      } else if (confirm.answer === 'no') {
-        event.source.checked = !this.toggleState;
-      }
-    });
   }
 }

@@ -20,7 +20,7 @@ export class CreateProductComponent {
   public createForm: FormGroup;
   public message: string[] = [];
   public selectedFiles?: Array<FileList>;
-  star: Avaliation[] = [
+  star:   Avaliation[] = [
     {value: '0.5', viewValue: '0.5'},
     {value: '1', viewValue: '1'},
     {value: '1.5', viewValue: '1.5'},
