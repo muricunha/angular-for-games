@@ -36,8 +36,13 @@ import { CreateAccountComponent } from './client-area/create-account/create-acco
 import { LoginUserComponent } from './client-area/login-user/login-user.component'
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
 import { ChangeClientComponent } from './client-area/change-client/change-client.component';
+<<<<<<< Updated upstream
 import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.component";
 
+=======
+import { ShoppingCarComponent } from './client-area/shopping-car/shopping-car.component';
+import {MatRadioModule} from '@angular/material/radio';
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +65,11 @@ import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.componen
     LoginUserComponent,
     CreditCardComponent,
     ChangeClientComponent,
+<<<<<<< Updated upstream
     ListOrdersComponent
+=======
+    ShoppingCarComponent,
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -82,7 +91,8 @@ import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.componen
     MatSelectModule,
     MatSnackBarModule,
     MatCardModule,
-    HttpClientModule
+    HttpClientModule,
+    MatRadioModule
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,

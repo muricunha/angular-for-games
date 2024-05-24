@@ -1,5 +1,7 @@
 <header class="container">
+  <a routerLink="/inicio">
   <img src="../../../assets/logoFourGames.png" alt="logo four games" width="120px" height="120px">
+  </a>
   <div class="container_button">
     <div class="continer-description" *ngIf="logged === null">
       <img src="../../../assets/user-avatar.png" width="36px" height="36px">
@@ -21,7 +23,7 @@
         <a (click)="logout()" class="cursor-sair">SAIR</a>
       </span>
     </div>
-    <img src="../../../assets/ph_basket.png" alt="" class="img">
+    <img src="../../../assets/ph_basket.png" alt="" class="img" routerLink="/carrinho">
   </div>
 </header>
 

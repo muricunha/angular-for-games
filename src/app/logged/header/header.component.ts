@@ -23,7 +23,6 @@ export class HeaderComponent {
 
   public logout(): void{
    const teste = sessionStorage.removeItem(this.sessionKey);
-   console.log(teste);
    this.router.navigate(['/login-user'])
   }
 }

@@ -34,6 +34,8 @@ export interface ViewSession {
   genero: string,
   nascimento: string,
   senha: string,
+  cpf: string,
+  email:string,
   endereco: Array<EnderecoForm>
 
 }

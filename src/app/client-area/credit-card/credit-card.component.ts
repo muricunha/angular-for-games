@@ -36,7 +36,6 @@ export class CreditCardComponent {
 
       }
       this.service.cadastrarCartao(request).subscribe((r) => {
-        console.log(request)
         this.openSnackBar();
       })
 

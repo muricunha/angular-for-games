@@ -90,8 +90,6 @@ export class CreateAccountComponent {
         }]
       }
       this.service.cadastrarCliente(request).subscribe((r) => {
-        console.log('teste 1',request)
-        console.log(r)
         this.openSnackBar();
         this.router.navigate(['/login-user'])
       })

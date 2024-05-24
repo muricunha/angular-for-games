@@ -25,14 +25,12 @@ export class LoginUserComponent {
   }
 
   public loginUser(): void{
-    console.log('entrou')
     const request: LoginCliente = {
       email: this.createFormuler.get('usuario')?.value,
       senha: this.createFormuler.get('senha')?.value,
     }
 
     this.clientService.logar(request).subscribe((response)=>{
-      console.log(response.status)
       if (response.status === 200) {
       const session =  sessionStorage.setItem("clienteLogado", JSON.stringify({
           id: response.body?.id,
@@ -40,6 +38,8 @@ export class LoginUserComponent {
           genero: response.body?.genero,
           nascimento: response.body?.nascimento,
           senha: response.body?.senha,
+          cpf: response.body?.cpf,
+          email: response.body?.email,
           endereco: response.body?.endereco.map(endereco => ({
             logradouro: endereco.logradouro,
             cep: endereco.cep,
@@ -51,7 +51,6 @@ export class LoginUserComponent {
           }))
 
         }));
-        console.log('testeeee',response.body?.senha)
 
         this.router.navigate(['/inicio']);
       }

@@ -9,6 +9,7 @@ import { CadastroClienteForm, EnderecoForm, LoginCliente, ViewSession } from './
 export class ClientService {
   public changeData: any;
   private readonly API = 'http://localhost:8081';
+  private readonly APICep = 'https://viacep.com.br/ws'
   constructor(public http: HttpClient) { }
 
   public logar(request: LoginCliente): Observable<HttpResponse<ViewSession>> {
@@ -19,6 +20,10 @@ export class ClientService {
   edit(user: CadastroClienteForm): Observable<CadastroClienteForm> {
     const url = `${this.API}/usuario/alterar`;
     return this.http.put<CadastroClienteForm>(url, user);
+  }
+
+  public getByViaCep(cep: string): Observable<any>{
+    return this.http.get(`${this.APICep}/${cep}/json`)
   }
 
   public salvarEndereco(request: EnderecoForm): Observable<EnderecoForm> {
