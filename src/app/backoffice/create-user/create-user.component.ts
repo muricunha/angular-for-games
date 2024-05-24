@@ -57,7 +57,6 @@ export class CreateUserComponent {
         senha: encriptSenha,
       }
       this.service.cadastro(request).subscribe((r) => {
-        console.log(request)
         this.dialogRef.close();
         this.openSnackBar();
       })

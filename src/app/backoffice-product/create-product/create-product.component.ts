@@ -81,7 +81,6 @@ export class CreateProductComponent {
 
 
     this.productService.criarProduto(request).subscribe(() => {
-      console.log(request);
       this.dialogRef.close();
       this.openSnackBar();
     })

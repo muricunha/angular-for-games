@@ -17,14 +17,18 @@ import { LoginUserComponent } from './client-area/login-user/login-user.componen
 import {CreditCardComponent} from "./client-area/credit-card/credit-card.component";
 
 import { ChangeClientComponent } from './client-area/change-client/change-client.component';
+<<<<<<< Updated upstream
 import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.component";
+=======
+import { ShoppingCarComponent } from './client-area/shopping-car/shopping-car.component';
+>>>>>>> Stashed changes
 
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   },
   {
@@ -74,10 +78,16 @@ const routes: Routes = [
     path: 'dados-pessoais',
     component: ChangeClientComponent
   },
+<<<<<<< Updated upstream
 
   {
     path: 'list-orders',
     component: ListOrdersComponent
+=======
+  {
+    path: 'carrinho',
+    component: ShoppingCarComponent
+>>>>>>> Stashed changes
   }
 ];
 

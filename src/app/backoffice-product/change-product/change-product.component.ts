@@ -55,7 +55,6 @@ export class ChangeProductComponent {
         caminhoImagem: ''
       }
         this.serviceProduct.editProduto(request).subscribe((r)=> {
-          console.log(request);
           this.dialogRef.close();
           this.openSnackBar();
         })

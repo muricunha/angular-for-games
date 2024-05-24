@@ -38,7 +38,8 @@
         <p>R$ {{preco}}</p>
         <p class="star">Avaliação (1-5): {{avaliacao}}</p>
       </div>
-      <button mat-raised-button color="primary" class="button-buy" disabled >COMPRAR</button>
+      <button mat-raised-button color="primary" class="button-buy">COMPRAR</button>
+      <button mat-stroked-button class="add-cart" (click)="addToCart()">Adicionar Ao Carrinho</button>
     </div>
   </div>
   </section>
