@@ -27,7 +27,7 @@ export class ClientService {
   }
 
   public salvarEndereco(request: EnderecoForm): Observable<EnderecoForm> {
-    const url = `${this.API}/endereco/salvar`;
+    const url = `${this.API}/usuario/salvar`;
     return this.http.post<EnderecoForm>(url, request)
   }
 

@@ -58,7 +58,7 @@ export class ForgamesService {
     return this.http.post<CartaoForm>(url, request)
   }
 
-  public listOrders(listOrdersForm: ListOrderForm): Observable<ListOrderForm> {
-    return this.http.post<ListOrderForm>(`${this.API}/pedido/listarPorNome/`, listOrdersForm);
+  public listOrders(listOrdersForm: ListOrderForm): Observable<ListOrder[]> {
+    return this.http.post<ListOrder[]>(`${this.API}/pedido/listarPorNome/`, listOrdersForm);
   }
 }

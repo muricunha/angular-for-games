@@ -2,7 +2,7 @@ import { Component, Inject, Input, Optional } from '@angular/core';
 import { ClientService } from '../client.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CadastroClienteForm, EnderecoForm } from '../client-create';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -24,30 +24,12 @@ export class ChangeClientComponent {
   public dataNascimento: string;
   public genero: string;
   public senha: string;
-  public logradouro: string
-  public cep: string;
-  public numero: string
-  public complemento: string;
-  public bairro: string;
-  public cidade: string;
-  public uf: string;
-
-
-  public bairrovia: string;
-  public logradourovia: string;
-  public cidadevia:string;
-  public ufvia: string;
-  public complementovia:string;
+  public cliente: any;
   constructor(
     private clientService: ClientService,
     private readonly formBuilder: FormBuilder,
     public snackBar: MatSnackBar,
   ){
-  }
-
-
-  ngOnInit(){
-    this.validateSession()
     this.formClient = new FormGroup({
       nome: new FormControl(this.nomeUsuario),
       nascimento: new FormControl(this.dataNascimento),
@@ -56,18 +38,11 @@ export class ChangeClientComponent {
       email: new FormControl(this.email),
       cpf: new FormControl(this.cpf)
     })
+  }
 
+  ngOnInit(){
+    this.validateSession()
     this.teste()
-
-    this.editFormAddress = new FormGroup({
-      logradouro: new FormControl(this.logradouro),
-      cep: new FormControl(this.cep),
-      numero: new FormControl(this.numero),
-      complemento: new FormControl(this.complemento),
-      bairro: new FormControl(this.bairro),
-      cidade: new FormControl(this.cidade),
-      uf: new FormControl(this.uf),
-    })
   }
 
   public mostrarProximaDiv(): void {
@@ -78,37 +53,28 @@ export class ChangeClientComponent {
     this.mostrarDiv1 = true;
   }
 
+  // public checkCep(event: any){
+  //   const cep = event.target.value.trim()
+  //   console.log(cep)
+  //   if(cep.length === 8){
+  //     this.getAddressCep(cep)
+  //   } else {
+  //     console.warn('CEP DEVE CONTER 8 DIGITOS')
+  //   }
+  // }
 
-  public mostrarDivEditar(): void {
-    this.mostrarDiv2 = true;
-  }
+  // public getAddressCep(cep: string): void{
+  //   this.clientService.getByViaCep(cep).subscribe((dados) => {
+  //     console.log(dados);
+  //     this.bairrovia = dados.bairro;
+  //     this.cidadevia = dados.localidade;
+  //     this.complementovia = dados.complemento;
+  //     this.ufvia = dados.uf;
+  //     this.logradourovia = dados.logradouro;
 
-  public voltarDiv(): void {
-    this.mostrarDiv2 = false;
-  }
-
-  public checkCep(event: any){
-    const cep = event.target.value.trim()
-    console.log(cep)
-    if(cep.length === 8){
-      this.getAddressCep(cep)
-    } else {
-      console.warn('CEP DEVE CONTER 8 DIGITOS')
-    }
-  }
-
-  public getAddressCep(cep: string): void{
-    this.clientService.getByViaCep(cep).subscribe((dados) => {
-      console.log(dados);
-      this.bairrovia = dados.bairro;
-      this.cidadevia = dados.localidade;
-      this.complementovia = dados.complemento;
-      this.ufvia = dados.uf;
-      this.logradourovia = dados.logradouro;
-
-    })
-    this.teste();
-  }
+  //   })
+  //   this.teste();
+  // }
 
   public teste(): void {
     this.formAddress = new FormGroup({
@@ -122,50 +88,26 @@ export class ChangeClientComponent {
     })
   }
 
-
   public validateSession(): void {
-    const clienteLogado = sessionStorage.getItem('clienteLogado')
-    if(clienteLogado){
+    const clienteLogado = sessionStorage.getItem('clienteLogado');
+    if (clienteLogado) {
+      this.cliente = JSON.parse(clienteLogado);
       const cliente = JSON.parse(clienteLogado);
-      this.id = cliente.id
-      this.nomeUsuario = cliente.usuario,
-      this.dataNascimento = cliente.nascimento,
-      this.genero = cliente.genero,
-      this.senha = cliente.senha,
-      this.cpf = cliente.cpf,
-      this.email = cliente.email
-      cliente.endereco.forEach((endereco: any)=> {
-        this.logradouro = endereco.logradouro,
-        this.cep = endereco.cep,
-        this.numero = endereco.numero,
-        this.complemento = endereco.complemento,
-        this.bairro = endereco.bairro,
-        this.cidade = endereco.cidade,
-        this.uf = endereco.uf
-      })
+      this.formClient.patchValue({
+        nome: cliente.usuario,
+        nascimento: cliente.nascimento,
+        genero: cliente.genero,
+        senha: cliente.senha,
+        email: cliente.email,
+        cpf: cliente.cpf
+      });
     }
   }
-
 
   public saveAddress(): void{
   this.mostrarDivEnd = true;
   this.mostrarDiv1 = true;
-  console.log(this.mostrarDivEnd)
-    // const requestAddress: EnderecoForm = {
-    //   logradouro: this.formAddress.get('logradouro')?.value,
-    //   cep: this.formAddress.get('cep')?.value,
-    //   numero: this.formAddress.get('numero')?.value,
-    //   complemento: this.formAddress.get('complemento')?.value,
-    //   bairro: this.formAddress.get('bairro')?.value,
-    //   cidade: this.formAddress.get('cidade')?.value,
-    //   uf: this.formAddress.get('uf')?.value,
-    // }
-    // this.clientService.salvarEndereco(requestAddress).subscribe(() =>{
-    //   this.openAddressBar();
-    // })
-
-
-    const getAddress = localStorage.setItem('endereco', JSON.stringify({
+    const requestAddress: EnderecoForm = {
       logradouro: this.formAddress.get('logradouro')?.value,
       cep: this.formAddress.get('cep')?.value,
       numero: this.formAddress.get('numero')?.value,
@@ -173,13 +115,16 @@ export class ChangeClientComponent {
       bairro: this.formAddress.get('bairro')?.value,
       cidade: this.formAddress.get('cidade')?.value,
       uf: this.formAddress.get('uf')?.value,
-    }))
+    }
+    console.log(requestAddress);
+
+    this.clientService.salvarEndereco(requestAddress).subscribe(() =>{
+      this.openAddressBar();
+    })
   }
 
-
   public editUsers(): void {
-    this.validateSession();
-    const endereco :EnderecoForm = {
+    const endereco:EnderecoForm = {
       logradouro: this.editFormAddress.get('logradouro')?.value,
       cep: this.editFormAddress.get('cep')?.value,
       numero: this.editFormAddress.get('numero')?.value,
@@ -187,7 +132,6 @@ export class ChangeClientComponent {
       bairro: this.editFormAddress.get('bairro')?.value,
       cidade: this.editFormAddress.get('cidade')?.value,
       uf: this.editFormAddress.get('uf')?.value
-
     }
     const request: CadastroClienteForm = {
       id: this.id,

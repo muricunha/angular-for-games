@@ -55,7 +55,7 @@ export class ListOrdersComponent {
 
     this.serviceListOrders.listOrders(listOrdersForm).subscribe(
       (listOrders) => {
-        this.dataSourceList.data = listOrders;
+        this.dataSourceList.data = listOrders
       },
       (error) => {
         this.dataSourceList.data = [];
