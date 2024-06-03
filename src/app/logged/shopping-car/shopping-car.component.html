@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="page-title">Seu Carrinho</div>
+      <div *ngIf="products.length < 1">
+      <h1 class="page-title">Não há produtos no seu carrinho</h1>
+      </div>
+      <div class="content" *ngIf="products.length > 0">
+        <section>
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+                <th>-</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of products">
+              <tr>
+                <td>
+                  <div class="product">
+                    <img src="https://picsum.photos/100/120" alt="" />
+                    <div class="info">
+                      <div class="name">{{product.nome}}</div>
+                      <div class="category">{{product.descricao}}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>R$ {{product.preco}}</td>
+                <td>
+                  <div class="qty">
+                    <button (click)="updateQuantity('min')">
+                      <i class="bx bx-minus"></i>
+                    </button>
+                    <span>{{productQuanity}}</span>
+                    <button (click)="updateQuantity('plus')">
+                      <i class="bx bx-plus"></i>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <button class="remove" (click)="removeItem(product.id)">
+                    <i class="bx bx-x"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <aside>
+          <div class="box">
+            <header>Calcular Frete</header>
+            <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="favoriteSeason">
+            <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+              {{season}}
+            </mat-radio-button>
+          </mat-radio-group>
+          </div>
+          <div class="box">
+            <header>Resumo da compra</header>
+            <div class="info">
+              <div><span>Sub-total</span><span>R$ {{getValueProducts()}}</span></div>
+              <div><span>Frete</span><span>{{favoriteSeason}}</span></div>
+            </div>
+            <footer>
+              <span>Total</span>
+              <span>R$ {{somaVlTotal()}}</span>
+            </footer>
+          </div>
+          <button (click)="addToCheckout()">Finalizar Compra</button>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

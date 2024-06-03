@@ -7,7 +7,6 @@ export interface Product {
   preco: number,
   qtdEstoque: number,
   caminhoImagem: string,
-
 }
 
 export interface ProductForm {

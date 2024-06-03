@@ -10,6 +10,7 @@ export interface CadastroClienteForm {
 }
 
 export interface EnderecoForm {
+  enderecoId: string,
   logradouro: string,
   cep: string,
   numero: string,

@@ -43,6 +43,14 @@
           <p>Numero: {{ endereco.numero }}, {{ endereco.complemento }}</p>
           <p>CEP {{ endereco.cep }} - {{ endereco.cidade }}, {{ endereco.uf }}</p>
         </div>
+        <div *ngIf="enderecos.length > 0">
+          <div class="container-end" *ngFor="let address of enderecos">
+            <p>{{address.logradouro}}</p>
+            <p>Numero: {{ address.numero }}, {{ address.complemento }}</p>
+            <p>CEP {{ address.cep }} - {{ address.cidade }}, {{ address.uf }}</p>
+          </div>
+        </div>
+
         <button mat-raised-button color="primary" (click)="mostrarProximaDiv()" class="button-prox">
           Cadastrar novo endereço
         </button>
@@ -59,7 +67,7 @@
           </mat-form-field>
           <mat-form-field appearance="outline" class="cep">
             <mat-label>CEP</mat-label>
-            <input matInput  formControlName="cep">
+            <input matInput  formControlName="cep" (blur)="checkCep($event)">
           </mat-form-field>
           <mat-form-field appearance="outline" class="numero">
             <mat-label>Número</mat-label>
