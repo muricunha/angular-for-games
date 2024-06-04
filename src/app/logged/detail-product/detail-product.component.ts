@@ -17,6 +17,7 @@ public products: Product[] = []
   public descricao: string = '';
   public preco: string = '';
   public id: number;
+  public caminhoImagem: string;
   ngOnInit(){
     localStorage.getItem("cart")
     this.router.params.subscribe(params => {
@@ -25,6 +26,7 @@ public products: Product[] = []
       this.descricao = params['descricao']
       this.preco = params['preco']
       this.id = params['id']
+      this.caminhoImagem = params['caminhoImagem']
     })
   }
 
@@ -34,7 +36,8 @@ public products: Product[] = []
       avaliacao: this.avaliacao,
       descricao: this.descricao,
       preco: this.preco,
-      id: this.id
+      id: this.id,
+      caminhoImagem: this.caminhoImagem
     }
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 

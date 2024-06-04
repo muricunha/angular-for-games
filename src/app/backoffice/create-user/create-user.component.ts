@@ -47,7 +47,7 @@ export class CreateUserComponent {
     const senha = this.createForm.get('password')?.value;
 
     let encriptSenha = CryptoJS.SHA256(senha).toString();
-
+    debugger;
     if (this.isCpfValid) {
       const request: ModalCreate = {
         nome: this.createForm.get('nome')?.value,

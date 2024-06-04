@@ -22,7 +22,7 @@ export class ForgamesService {
 
   edit(user: Backoffice): Observable<Backoffice> {
     const url = `${this.API}/colaborador/alterar`;
-    return this.http.put<Backoffice>(url, user);
+    return this.http.post<Backoffice>(url, user);
   }
 
   buscarPorId(id: number): Observable<Backoffice> {
