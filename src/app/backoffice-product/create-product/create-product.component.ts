@@ -20,7 +20,7 @@ export class CreateProductComponent {
   public createForm: FormGroup;
   public message: string[] = [];
   public selectedFiles?: Array<FileList>;
-  star:   Avaliation[] = [
+  star: Avaliation[] = [
     {value: '0.5', viewValue: '0.5'},
     {value: '1', viewValue: '1'},
     {value: '1.5', viewValue: '1.5'},
@@ -32,8 +32,7 @@ export class CreateProductComponent {
     {value: '4.5', viewValue: '4.5'},
     {value: '5', viewValue: '5'},
   ];
-  file: File;
-  imageUrl: string = '';
+  file: FileList;
 
   constructor(public productService: ProductService,
               private dialogRef: MatDialogRef<CreateProductComponent>,
@@ -62,28 +61,25 @@ export class CreateProductComponent {
       descricao: this.createForm.get('description')?.value,
       preco: this.createForm.get('preco')?.value,
       qtdEstoque: this.createForm.get('estoque')?.value,
-      caminhoImagem: ''
+      caminhoImagem: []
     }
-    // this.salvarFoto();
 
-
-      this.salvarFoto()
-        .then((response) => {
-          console.log('Resposta da requisição:', response);
-          if (response && response.data) {
-            this.imageUrl = response.data;
-          }
-        })
-        .catch((error) => {
-          console.error('Erro ao salvar a foto', error);
+    this.salvarFoto()
+      .then((response) => {
+        response.data.forEach((caminho: string) => {
+          request.caminhoImagem.push({
+            caminho: '../assets/images/' + caminho
+          });
         });
 
-
-
-    this.productService.criarProduto(request).subscribe(() => {
-      this.dialogRef.close();
-      this.openSnackBar();
-    })
+        this.productService.criarProduto(request).subscribe(() => {
+          this.dialogRef.close();
+          this.openSnackBar();
+        })
+      })
+      .catch((error) => {
+        console.error('Erro ao salvar a foto', error);
+      });
 
   }
 
@@ -113,15 +109,19 @@ export class CreateProductComponent {
   }
 
   public onFileSelected(event: any): void {
-    this.file = event.target.files[0];
+    this.file = event.target.files;
   }
 
   async salvarFoto(): Promise<string | any> {
+    const files = this.file;
+    const formData = new FormData();
+    for (let i = 0; i < this.file.length; i++) {
+      formData.append('imagens', this.file[i], this.file[i].name);
+    }
+    debugger;
     return axios.post<string>(
       'http://localhost:8081/produto/salvarImagem',
-      {
-        imagem: this.file
-      },
+      formData,
       {
         headers: {
           'Content-Type': 'multipart/form-data'

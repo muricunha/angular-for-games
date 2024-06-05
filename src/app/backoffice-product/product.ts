@@ -6,7 +6,7 @@ export interface Product {
   descricao: string,
   preco: number,
   qtdEstoque: number,
-  caminhoImagem: string,
+  caminhoImagem: Array<CaminhoImagem>
 }
 
 export interface ProductForm {
@@ -15,4 +15,8 @@ export interface ProductForm {
 
 export interface Imagem {
   imagem: File | string
+}
+
+export interface CaminhoImagem {
+  caminho: string
 }
