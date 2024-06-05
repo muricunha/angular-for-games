@@ -16,63 +16,45 @@
       <div class="page-title">Forma de Pagamento</div>
       <div class="content">
         <section>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <div class="product">
-                    <img src="https://picsum.photos/100/120" alt="" />
-                    <div class="info">
-                      <div class="name">olaaaaa</div>
-                      <div class="category">ol3</div>
-                    </div>
-                  </div>
-                </td>
-                <td>R$ oww</td>
-                <td>
-                  <div class="qty">
-                    <button>
-                      <i class="bx bx-minus"></i>
-                    </button>
-                    <span>owkwmdw</span>
-                    <button>
-                      <i class="bx bx-plus"></i>
-                    </button>
-                  </div>
-                </td>
-                <td>
-                  <button class="remove">
-                    <i class="bx bx-x"></i>
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <mat-radio-group class="form-pag">
+            <mat-radio-button value="1" (change)="onChangeEvent($event)">Boleto Bancário</mat-radio-button>
+            <mat-radio-button value="2" (change)="onChangeEvent($event)">Cartão de Crédito</mat-radio-button>
+          </mat-radio-group>
+          <div class="credit-card" [formGroup]="createForm" *ngIf="mostrarDiv">
+            <mat-form-field appearance="outline">
+              <mat-label>Nome Completo</mat-label>
+              <input matInput formControlName="nome" maxlength="40"/>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Numero do cartão</mat-label>
+              <input matInput formControlName="numero" mask="0000-0000-0000-0000"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>CVV</mat-label>
+              <input matInput formControlName="seguranca" mask="000"/>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="outline">
+              <mat-label>Data de Validade</mat-label>
+              <input matInput formControlName="validade" mask="00/00/0000"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Parcelas</mat-label>
+              <mat-select formControlName="parcelas">
+                <mat-option *ngFor="let parcelamento of parcelas" [value]="parcelamento.value">{{parcelamento.viewValue}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
         </section>
         <aside>
           <div class="box">
-            <header>Calcular Frete</header>
-            <mat-radio-group
-            aria-labelledby="example-radio-group-label"
-            class="example-radio-group">
-            <mat-radio-button class="example-radio-button">
-
-            </mat-radio-button>
-          </mat-radio-group>
-          </div>
-          <div class="box">
             <header>Resumo da compra</header>
             <div class="info">
-              <div><span>Sub-total</span><span>R$ </span></div>
-              <div><span>Frete</span><span></span></div>
+              <div><span>Total da compra</span><span>R$ {{totalValue}}</span></div>
             </div>
-            <footer>
-              <span>Total</span>
-              <span>R$ </span>
-            </footer>
           </div>
-          <button class="buy" >Finalizar Compra</button>
-          <button routerLink="/inicio">Continuar Comprando</button>
+          <button class="buy" routerLink="/checkout">Finalizar Compra</button>
         </aside>
       </div>
     </main>

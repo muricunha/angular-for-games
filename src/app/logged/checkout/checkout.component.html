@@ -1,1 +1,85 @@
-<p>checkout works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrinho de Compras</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <div class="page-title">Resumo do Pedido</div>
+      <div class="content">
+        <section>
+          <table>
+            <thead>
+              <tr>
+                <th>Produto</th>
+                <th>Preço</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let product of products">
+              <tr>
+                <td>
+                  <div class="product">
+                    <img src="{{product.caminhoImagem}}" alt="" width="100px" height="120px"/>
+                    <div class="info">
+                      <div class="name">{{product.nome}}</div>
+                      <div class="category">{{product.descricao}}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>R$ {{product.preco}}</td>
+                <td>
+                  <div>
+                    <span>{{this.quantidade}}</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
+          <div class="address-delivery">
+            <h1>Endereço de Entrega</h1>
+            <div class="delivery">
+              <strong>{{endereco.logradouro}}</strong>
+              <p><strong>Número:</strong> {{endereco.numero}}</p>
+              <p><strong>Bairro:</strong> {{endereco.bairro}}</p>
+              <p><strong>CEP:</strong> {{endereco.cep}}</p>
+              <p><strong>Cidade:</strong> {{endereco.cidade}}</p>
+              <p><strong>Complemento:</strong> {{endereco.complemento}}</p>
+              <p><strong>UF:</strong> {{endereco.uf}}</p>
+            </div>
+          </div>
+        </section>
+        <aside>
+          <div class="box">
+            <header>Total da compra</header>
+            <div class="info">
+              <div><span>Sub-total</span><span>R$ {{this.subTotal}}</span></div>
+              <div><span>Frete</span><span>R$ {{this.frete}},00</span></div>
+            </div>
+            <footer>
+              <span>Total</span>
+              <span>R$ {{valorTotal}}</span>
+            </footer>
+          </div>
+          <div class="box">
+            <header>Forma de Pagamento</header>
+            <div class="info">
+              <div><span>{{this.formaPagamento}}</span></div>
+            </div>
+          </div>
+          <button class="buy">Confirmar Pagamento</button>
+          <button routerLink="/credit-card">voltar</button>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

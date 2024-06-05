@@ -40,11 +40,7 @@ public products: Product[] = []
       caminhoImagem: this.caminhoImagem
     }
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-
     const teste = cart.push(produto);
-
-    console.log(teste);
-
     localStorage.setItem("cart", JSON.stringify(cart));
 
   }

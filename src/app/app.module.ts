@@ -40,7 +40,8 @@ import { ShoppingCarComponent } from './logged/shopping-car/shopping-car.compone
 import {MatRadioModule} from '@angular/material/radio';
 import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.component";
 import { CheckoutComponent } from './logged/checkout/checkout.component';
-import { ChooseAddressComponent } from './logged/choose-address/choose-address.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +67,6 @@ import { ChooseAddressComponent } from './logged/choose-address/choose-address.c
     ShoppingCarComponent,
     ListOrdersComponent,
     CheckoutComponent,
-    ChooseAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +89,9 @@ import { ChooseAddressComponent } from './logged/choose-address/choose-address.c
     MatSnackBarModule,
     MatCardModule,
     HttpClientModule,
-    MatRadioModule
+    MatRadioModule,
+    MatCheckboxModule,
+    MatBadgeModule
   ],
   providers: [provideNgxMask(),
   MatSlideToggle,

@@ -11,9 +11,15 @@ $for-ui-theme: mat-light-theme($for-ui-primary, $for-ui-accent, $for-ui-warn);
 
 @include angular-material-theme($for-ui-theme);
 
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   color: $forgames-orange;
-  font-family: 'inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }

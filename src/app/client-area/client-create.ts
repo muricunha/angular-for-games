@@ -23,7 +23,8 @@ export interface CartaoForm {
   nome: string,
   validade: string,
   numero: string,
-  seguranca: string
+  seguranca: string,
+  parcelas: string
 }
 export interface LoginCliente {
   email: string,

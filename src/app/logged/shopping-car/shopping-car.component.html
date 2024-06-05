@@ -33,7 +33,7 @@
               <tr>
                 <td>
                   <div class="product">
-                    <img src="https://picsum.photos/100/120" alt="" />
+                    <img src="{{product.caminhoImagem}}" alt="" width="100px" height="120px"/>
                     <div class="info">
                       <div class="name">{{product.nome}}</div>
                       <div class="category">{{product.descricao}}</div>
@@ -84,7 +84,25 @@
               <span>R$ {{somaVlTotal()}}</span>
             </footer>
           </div>
-          <button class="buy" (click)="addToCheckout()">Finalizar Compra</button>
+          <div class="box">
+            <header>Entrega</header>
+            <div class="info-address">
+              <div *ngIf="verifySession() === false">
+              <p class="logouted">faça login para adicionar um endereço de entrega</p>
+              </div>
+              <div *ngIf="cliente?.endereco?.length">
+                <div *ngFor="let endereco of cliente.endereco; let i = index" class="address">
+                  <button mat-icon-button class="selected-address" (click)="onSelectionChange(endereco)">
+                    <mat-icon>check</mat-icon>
+                  </button>
+                  <p>{{ endereco.logradouro }}</p>
+                  <p>Numero: {{ endereco.numero }}, {{ endereco.complemento }}</p>
+                  <p>CEP {{ endereco.cep }} - {{ endereco.cidade }}, {{ endereco.uf }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="buy" (click)="addToCheckout()">Ir para o Pagamento</button>
           <button routerLink="/inicio">Continuar Comprando</button>
         </aside>
       </div>

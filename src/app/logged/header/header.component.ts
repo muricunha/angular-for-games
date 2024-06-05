@@ -12,9 +12,11 @@ export class HeaderComponent {
   public nomeUsuario: string;
   public sessionKey = 'clienteLogado';
   public logged = sessionStorage.getItem('clienteLogado');
-  ngOnInit(){
-    const clienteLogado = sessionStorage.getItem('clienteLogado')
+  public cart = JSON.parse(localStorage.getItem("cart") || "[]").length;
 
+  ngOnInit(){
+    this.cart;
+    const clienteLogado = sessionStorage.getItem('clienteLogado')
     if(clienteLogado){
       const cliente = JSON.parse(clienteLogado);
       this.nomeUsuario = cliente.usuario;
