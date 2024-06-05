@@ -20,7 +20,7 @@ export class CreateProductComponent {
   public createForm: FormGroup;
   public message: string[] = [];
   public selectedFiles?: Array<FileList>;
-  star:   Avaliation[] = [
+  star: Avaliation[] = [
     {value: '0.5', viewValue: '0.5'},
     {value: '1', viewValue: '1'},
     {value: '1.5', viewValue: '1.5'},
@@ -64,26 +64,19 @@ export class CreateProductComponent {
       qtdEstoque: this.createForm.get('estoque')?.value,
       caminhoImagem: ''
     }
-    // this.salvarFoto();
 
+    this.salvarFoto()
+      .then((response) => {
+        request.caminhoImagem = '../assets/images/' + response.data;
 
-      this.salvarFoto()
-        .then((response) => {
-          console.log('Resposta da requisição:', response);
-          if (response && response.data) {
-            this.imageUrl = response.data;
-          }
+        this.productService.criarProduto(request).subscribe(() => {
+          this.dialogRef.close();
+          this.openSnackBar();
         })
-        .catch((error) => {
-          console.error('Erro ao salvar a foto', error);
-        });
-
-
-
-    this.productService.criarProduto(request).subscribe(() => {
-      this.dialogRef.close();
-      this.openSnackBar();
-    })
+      })
+      .catch((error) => {
+        console.error('Erro ao salvar a foto', error);
+      });
 
   }
 
