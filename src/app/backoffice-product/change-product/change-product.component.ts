@@ -52,7 +52,7 @@ export class ChangeProductComponent {
         descricao: this.productForm.get('description')?.value,
         preco: this.productForm.get('preco')?.value,
         qtdEstoque: this.productForm.get('estoque')?.value,
-        caminhoImagem: ''
+        caminhoImagem: []
       }
         this.serviceProduct.editProduto(request).subscribe((r)=> {
           this.dialogRef.close();

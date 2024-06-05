@@ -32,8 +32,7 @@ export class CreateProductComponent {
     {value: '4.5', viewValue: '4.5'},
     {value: '5', viewValue: '5'},
   ];
-  file: File;
-  imageUrl: string = '';
+  file: FileList;
 
   constructor(public productService: ProductService,
               private dialogRef: MatDialogRef<CreateProductComponent>,
@@ -62,12 +61,16 @@ export class CreateProductComponent {
       descricao: this.createForm.get('description')?.value,
       preco: this.createForm.get('preco')?.value,
       qtdEstoque: this.createForm.get('estoque')?.value,
-      caminhoImagem: ''
+      caminhoImagem: []
     }
 
     this.salvarFoto()
       .then((response) => {
-        request.caminhoImagem = '../assets/images/' + response.data;
+        response.data.forEach((caminho: string) => {
+          request.caminhoImagem.push({
+            caminho: '../assets/images/' + caminho
+          });
+        });
 
         this.productService.criarProduto(request).subscribe(() => {
           this.dialogRef.close();
@@ -106,15 +109,19 @@ export class CreateProductComponent {
   }
 
   public onFileSelected(event: any): void {
-    this.file = event.target.files[0];
+    this.file = event.target.files;
   }
 
   async salvarFoto(): Promise<string | any> {
+    const files = this.file;
+    const formData = new FormData();
+    for (let i = 0; i < this.file.length; i++) {
+      formData.append('imagens', this.file[i], this.file[i].name);
+    }
+    debugger;
     return axios.post<string>(
       'http://localhost:8081/produto/salvarImagem',
-      {
-        imagem: this.file
-      },
+      formData,
       {
         headers: {
           'Content-Type': 'multipart/form-data'
