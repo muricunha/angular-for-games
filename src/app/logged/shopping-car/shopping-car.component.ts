@@ -69,7 +69,7 @@ public addToCheckout(): void{
   const clienteLogado = sessionStorage.getItem('clienteLogado')
 
   if(clienteLogado){
-    this.router.navigate(['/inicio'])
+    this.router.navigate(['/checkout'])
   }else {
     this.router.navigate(['login-user'])
   }

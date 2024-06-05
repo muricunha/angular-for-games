@@ -39,6 +39,8 @@ import { ChangeClientComponent } from './client-area/change-client/change-client
 import { ShoppingCarComponent } from './logged/shopping-car/shopping-car.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.component";
+import { CheckoutComponent } from './logged/checkout/checkout.component';
+import { ChooseAddressComponent } from './logged/choose-address/choose-address.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +64,9 @@ import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.componen
     CreditCardComponent,
     ChangeClientComponent,
     ShoppingCarComponent,
-    ListOrdersComponent
+    ListOrdersComponent,
+    CheckoutComponent,
+    ChooseAddressComponent
   ],
   imports: [
     BrowserModule,

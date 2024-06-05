@@ -110,7 +110,6 @@ table tbody tr td {
 
 .product .info .category {
   color: #666;
-  max-width: 450px;
 }
 
 .qty {
@@ -243,19 +242,6 @@ aside > button {
   background: #28a745;
   display: block;
   width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-size: 16px;
-}
-
-.no-product{
-  border: 0;
-  padding: 15px 0;
-  color: white;
-  background: #28a745;
-  display: block;
-  margin: 0 auto;
-  width: 50%;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 16px;

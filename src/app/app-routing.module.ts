@@ -19,6 +19,7 @@ import {CreditCardComponent} from "./client-area/credit-card/credit-card.compone
 import { ChangeClientComponent } from './client-area/change-client/change-client.component';
 import { ShoppingCarComponent } from './logged/shopping-car/shopping-car.component';
 import { ListOrdersComponent } from "./backoffice/list-orders/list-orders.component";
+import { CheckoutComponent } from './logged/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -81,6 +82,10 @@ const routes: Routes = [
   {
     path: 'carrinho',
     component: ShoppingCarComponent
+  },
+  {
+    path: 'checkout',
+    component: CheckoutComponent
   }
 ];
 

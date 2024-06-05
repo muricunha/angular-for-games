@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carrinho de Compras</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -16,6 +16,7 @@
       <div class="page-title">Seu Carrinho</div>
       <div *ngIf="products.length < 1">
       <h1 class="page-title">Não há produtos no seu carrinho</h1>
+      <button class="no-product" routerLink="/inicio">Continuar Comprando</button>
       </div>
       <div class="content" *ngIf="products.length > 0">
         <section>
@@ -83,7 +84,8 @@
               <span>R$ {{somaVlTotal()}}</span>
             </footer>
           </div>
-          <button (click)="addToCheckout()">Finalizar Compra</button>
+          <button class="buy" (click)="addToCheckout()">Finalizar Compra</button>
+          <button routerLink="/inicio">Continuar Comprando</button>
         </aside>
       </div>
     </main>
