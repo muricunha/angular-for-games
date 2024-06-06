@@ -12,10 +12,6 @@ export class CardProductComponent {
 
 constructor(private router: Router){}
 
-// public openDetailProduct(product: Product): void {
-//   this.router.navigate(['/produto', product])
-// }
-
   gravaParametrosStorage() {
   let dadosProduto = JSON.stringify(this.product);
   localStorage.setItem('dadosProduto', dadosProduto);
