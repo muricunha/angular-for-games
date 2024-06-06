@@ -80,7 +80,7 @@ export class CreateAccountComponent {
         genero: this.createForm.get('genero')?.value,
         senha: this.createForm.get('senha')?.value,
         endereco: [{
-          enderecoId: this.createForm.get('enderecoId')?.value,
+          id: this.createForm.get('enderecoId')?.value,
           logradouro: this.createForm.get('logradouro')?.value,
           cep: this.createForm.get('cep')?.value,
           numero: this.createForm.get('numero')?.value,

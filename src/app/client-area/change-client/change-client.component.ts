@@ -1,9 +1,9 @@
-import { Component, Inject, Input, Optional } from '@angular/core';
-import { ClientService } from '../client.service';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CadastroClienteForm, EnderecoForm } from '../client-create';
-import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import {Component, Inject, Input, Optional} from '@angular/core';
+import {ClientService} from '../client.service';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {CadastroClienteForm, EnderecoForm} from '../client-create';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-change-client',
@@ -27,11 +27,12 @@ export class ChangeClientComponent {
   public genero: string;
   public senha: string;
   public cliente: any;
+
   constructor(
     private clientService: ClientService,
     private readonly formBuilder: FormBuilder,
     public snackBar: MatSnackBar,
-  ){
+  ) {
     this.formClient = new FormGroup({
       nome: new FormControl(this.nomeUsuario),
       nascimento: new FormControl(this.dataNascimento),
@@ -42,9 +43,12 @@ export class ChangeClientComponent {
     })
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.enderecos = []
     this.validateSession()
+    this.clientService.obterUsuarioPorId(this.cliente.id).subscribe((request) =>{
+      this.cliente = request;
+    });
     this.formAddress = new FormGroup({
       enderecoId: new FormControl(),
       logradouro: new FormControl(),
@@ -76,17 +80,17 @@ export class ChangeClientComponent {
     this.mostrarDiv1 = true;
   }
 
-  public checkCep(event: any){
+  public checkCep(event: any) {
     const cep = event.target.value.trim()
     console.log(cep)
-    if(cep.length === 8){
+    if (cep.length === 8) {
       this.getAddressCep(cep)
     } else {
       console.warn('CEP DEVE CONTER 8 DIGITOS')
     }
   }
 
-  public getAddressCep(cep: string): void{
+  public getAddressCep(cep: string): void {
     this.clientService.getByViaCep(cep).subscribe((dados) => {
       console.log(dados);
       this.formAddress.patchValue({
@@ -117,11 +121,11 @@ export class ChangeClientComponent {
     }
   }
 
-  public saveAddress(): void{
-  this.mostrarDivEnd = true;
-  this.mostrarDiv1 = true;
+  public saveAddress(): void {
+    this.mostrarDivEnd = true;
+    this.mostrarDiv1 = true;
     const requestAddress: EnderecoForm = {
-      enderecoId: this.formAddress.get('enderecoId')?.value,
+      id: this.formAddress.get('enderecoId')?.value,
       logradouro: this.formAddress.get('logradouro')?.value,
       cep: this.formAddress.get('cep')?.value,
       numero: this.formAddress.get('numero')?.value,
@@ -133,23 +137,20 @@ export class ChangeClientComponent {
 
     const address: EnderecoForm = this.formAddress.value;
     console.log(address);
-
-     this.enderecos.push(address);
-
+  let clienteParaAtualizar = this.cliente;
+    this.enderecos.push(address);
+    clienteParaAtualizar.endereco.push(address);
     this.clientService.addEndereco(requestAddress);
 
-    const clienteAtualizado = this.clientService.getCliente() as CadastroClienteForm;
+    this.clientService.alterarEndereco(clienteParaAtualizar).subscribe(() => {
+      this.openAddressBar();
+    });
 
-    if (clienteAtualizado) {
-      this.clientService.salvarEndereco(clienteAtualizado).subscribe(() => {
-        this.openAddressBar();
-      });
-    }
   }
 
   public editUsers(): void {
-    const endereco:EnderecoForm = {
-      enderecoId: this.editFormAddress.get('enderecoId')?.value,
+    const endereco: EnderecoForm = {
+      id: this.editFormAddress.get('enderecoId')?.value,
       logradouro: this.editFormAddress.get('logradouro')?.value,
       cep: this.editFormAddress.get('cep')?.value,
       numero: this.editFormAddress.get('numero')?.value,
@@ -170,14 +171,14 @@ export class ChangeClientComponent {
     }
     this.clientService.edit(request).subscribe(() => {
       this.openSnackBar();
-      })
+    })
   }
 
   public openSnackBar(): void {
     this.snackBar.open('alteração feita com sucesso!', 'Fechar', {
       duration: 3000
     })
-    }
+  }
 
   public openAddressBar(): void {
     this.snackBar.open('cadastro feito com sucesso!', 'Fechar', {

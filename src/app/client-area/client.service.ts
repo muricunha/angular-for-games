@@ -33,9 +33,18 @@ export class ClientService {
     return this.http.post<CadastroClienteForm>(url, request)
   }
 
+  public alterarEndereco(request: CadastroClienteForm): Observable<CadastroClienteForm> {
+    const url = `${this.API}/usuario/alterar`;
+    return this.http.put<CadastroClienteForm>(url, request)
+  }
+
   public listarEndereco(): Observable<EnderecoForm> {
     const url = `${this.API}/endereco/listar`;
     return this.http.get<EnderecoForm>(url);
+  }
+  public obterUsuarioPorId(id: number): Observable<CadastroClienteForm> {
+    const url = `${this.API}/usuario/${id}`;
+    return this.http.get<CadastroClienteForm>(url);
   }
 
   public setDados(changeData: any){

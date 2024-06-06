@@ -41,6 +41,7 @@ export class LoginUserComponent {
           cpf: response.body?.cpf,
           email: response.body?.email,
           endereco: response.body?.endereco.map(endereco => ({
+            id: endereco.id,
             logradouro: endereco.logradouro,
             cep: endereco.cep,
             numero: endereco.numero,
