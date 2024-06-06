@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/backoffice-product/product';
+import {ClientService} from "../../client-area/client.service";
 
 @Component({
   selector: 'app-shopping-car',
@@ -17,12 +18,16 @@ public selectedEndereco: any;
 favoriteSeason: string;
 seasons: string[] = ['15,00','30,00','50,00'];
 
-  constructor(private router: Router, private snack: MatSnackBar){}
+  constructor(private router: Router, private snack: MatSnackBar, private clientService: ClientService,){}
   ngOnInit(){
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
     this.verifySession();
     this.products = cart;
     this.getValueProducts();
+    this.clientService.obterUsuarioPorId(this.cliente.id).subscribe((request) =>{
+      this.cliente = request;
+      debugger;
+    });
   }
 
   public validateSession(): void {

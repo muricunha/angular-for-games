@@ -288,3 +288,10 @@ aside > button:hover {
   background: #3bc55b;
 }
 /*# sourceMappingURL=styles.css.map */
+
+.address-list{
+
+  overflow: auto;
+  height: 150px;
+
+}

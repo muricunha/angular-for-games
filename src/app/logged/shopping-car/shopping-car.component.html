@@ -91,14 +91,17 @@
               <p class="logouted">faça login para adicionar um endereço de entrega</p>
               </div>
               <div *ngIf="cliente?.endereco?.length">
-                <div *ngFor="let endereco of cliente.endereco; let i = index" class="address">
-                  <button mat-icon-button class="selected-address" (click)="onSelectionChange(endereco)">
-                    <mat-icon>check</mat-icon>
-                  </button>
-                  <p>{{ endereco.logradouro }}</p>
-                  <p>Numero: {{ endereco.numero }}, {{ endereco.complemento }}</p>
-                  <p>CEP {{ endereco.cep }} - {{ endereco.cidade }}, {{ endereco.uf }}</p>
+                <div class="address-list">
+                  <div *ngFor="let endereco of cliente.endereco; let i = index" class="address">
+                    <button mat-icon-button class="selected-address" (click)="onSelectionChange(endereco)">
+                      <mat-icon>check</mat-icon>
+                    </button>
+                    <p>{{ endereco.logradouro }}</p>
+                    <p>Numero: {{ endereco.numero }}, {{ endereco.complemento }}</p>
+                    <p>CEP {{ endereco.cep }} - {{ endereco.cidade }}, {{ endereco.uf }}</p>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>

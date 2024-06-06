@@ -5,9 +5,9 @@ import {ForgamesService} from 'src/app/backoffice/forgames.service';
 import {AuthenticationService} from 'src/app/auth/authentication.service';
 import {ListOrder, ListOrderForm, StatusPedido} from "../backoffice";
 
-interface Status {
-  value: string;
-  viewValue: string;
+export class Status {
+  id: number;
+  name: string;
 }
 
 @Component({
@@ -46,9 +46,9 @@ export class ListOrdersComponent {
   // O array do componente mat-select no html
 
   status: Status [] = [
-    {value: 'AGUARDANDO_APROVACAO', viewValue: 'Aguardando aprovação'},
-    {value: 'EM_ANDAMENTO', viewValue: 'Em andamento'},
-    {value: 'CONCLUIDO', viewValue: 'Concluído'}
+    {id: 0 ,name: 'AGUARDANDO_APROVACAO'},
+    {id: 1 ,name: 'EM_ANDAMENTO'},
+    {id: 2 ,name: 'CONCLUIDO'}
   ]
 
   // Uma boa prática do angular, recurso que possibilita condicionamento de regras ou valores no html, e gerencia o estado inicial de algum atributo
