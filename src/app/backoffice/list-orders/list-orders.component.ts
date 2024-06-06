@@ -18,14 +18,19 @@ interface Status {
 
 export class ListOrdersComponent {
   public listOrders : FormGroup
-
+  constructor(
+    private serviceListOrders: ForgamesService,
+    private authenticationService: AuthenticationService
+  ) {}
+  user$ = this.authenticationService.getUser();
 
   public dataSourceList = new MatTableDataSource<ListOrder>();
   displayedColumns: string[] = [
     'numeroPedido',
     'valor',
     'dataPedido',
-    'status'
+    'status',
+    'envio'
   ];
 
   status: Status [] = [
@@ -34,27 +39,22 @@ export class ListOrdersComponent {
     {value: 'CONCLUIDO', viewValue:'Concluído'}
   ]
 
-  constructor(
-    private serviceListOrders: ForgamesService,
-    private authenticationService: AuthenticationService
-  ) {}
-  user$ = this.authenticationService.getUser();
 
   ngOnInit() {
     this.listOrders = new FormGroup({
       nome: new FormControl(''),
     });
-    this.findOrders();
   }
 
   public findOrders() {
-    const nomeCliente = this.listOrders.value.nome;
+    const nomeCliente = this.listOrders.get('nome')?.value;
     const listOrdersForm = {
-      nome: nomeCliente,
-    } as ListOrderForm;
+      nome: nomeCliente
+    }
 
     this.serviceListOrders.listOrders(listOrdersForm).subscribe(
       (listOrders) => {
+        console.log(listOrders);
         this.dataSourceList.data = listOrders
       },
       (error) => {
