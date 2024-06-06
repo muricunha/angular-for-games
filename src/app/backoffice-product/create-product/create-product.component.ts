@@ -118,7 +118,6 @@ export class CreateProductComponent {
     for (let i = 0; i < this.file.length; i++) {
       formData.append('imagens', this.file[i], this.file[i].name);
     }
-    debugger;
     return axios.post<string>(
       'http://localhost:8081/produto/salvarImagem',
       formData,

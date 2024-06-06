@@ -1,12 +1,12 @@
 <mat-card class="card-busca">
   <img mat-card-image
-  src="{{product.caminhoImagem}}"
+  src="{{this.product.caminhoImagem[0].caminho}}"
   alt="Imagem do Jogo">
   <ul>
     <li>{{product.nome}}</li>
     <li>R$ {{product.preco}}</li>
   </ul>
-  <mat-card-actions><button mat-flat-button color="primary" [routerLink]="['/produto', product]">VER DETALHES</button>
+  <mat-card-actions><button mat-flat-button color="primary" (click)="gravaParametrosStorage()" [routerLink]="['/produto']">VER DETALHES</button>
 
   </mat-card-actions>
 </mat-card>

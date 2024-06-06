@@ -39,7 +39,6 @@ export class ProductService {
 
   public salvarImagem(imagem: File): Observable<string> {
     const url = `${this.API}/produto/salvarImagem`;
-    debugger;
     return this.http.post<string>(
       url,
       {
