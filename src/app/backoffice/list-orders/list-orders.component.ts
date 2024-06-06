@@ -46,9 +46,9 @@ export class ListOrdersComponent {
   // O array do componente mat-select no html
 
   status: Status [] = [
-    {id: 0 ,name: 'AGUARDANDO_APROVACAO'},
-    {id: 1 ,name: 'EM_ANDAMENTO'},
-    {id: 2 ,name: 'CONCLUIDO'}
+    {id: 1, name: 'Aguardando aprovação'},
+    {id: 2, name: 'Em andamento'},
+    {id: 3, name: 'Concluído'}
   ]
 
   // Uma boa prática do angular, recurso que possibilita condicionamento de regras ou valores no html, e gerencia o estado inicial de algum atributo
@@ -59,7 +59,7 @@ export class ListOrdersComponent {
     });
 
     this.formStatus = new FormGroup ({
-      status: new FormControl(this.formStatus.get('status')?.value)
+      status: new FormControl('')
     })
   }
 

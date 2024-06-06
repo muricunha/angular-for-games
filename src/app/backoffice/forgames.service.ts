@@ -62,6 +62,10 @@ export class ForgamesService {
     return this.http.post<ListOrder[]>(`${this.API}/pedido/listarPorNome`, listOrdersForm);
   }
 
+  public saveOrder(request: ListOrder): Observable<ListOrder>{
+    return this.http.post<ListOrder>(`${this.API}/pedido/salvar`, request)
+  }
+
   public getNewOrderList(statusPedido: StatusPedido): Observable<StatusPedido>{
     const url = `${this.API}/pedido/cancelar`
     return this.http.patch<StatusPedido>(url, statusPedido)
