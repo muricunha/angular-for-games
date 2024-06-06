@@ -20,6 +20,7 @@ export class DetailProductComponent {
   ngOnInit() {
     localStorage.getItem("cart")
     var dadosBrutos = localStorage.getItem("dadosProduto");
+    localStorage.removeItem("dadosProduto");
     this.product = JSON.parse(dadosBrutos || '');
     this.fotoPrincipal = this.product.caminhoImagem[0].caminho;
     this.fotos = [];
