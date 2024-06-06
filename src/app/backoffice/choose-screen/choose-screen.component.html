@@ -4,7 +4,7 @@
     <div class="description">
         <button mat-raised-button color="primary" routerLink="/listarProduto">Listar Produto</button>
         <button mat-raised-button color="primary" routerLink="/listarUsuarios" [disabled]="(user$ | async)?.grupo?.includes('ESTOQ')">Listar Usuários</button>
-        <button mat-raised-button color="primary">Listar Pedidos</button>
+        <button mat-raised-button color="primary" routerLink="/list-orders">Listar Pedidos</button>
         <button mat-raised-button (click)="sair()">Sair</button>
     </div>
   </div>

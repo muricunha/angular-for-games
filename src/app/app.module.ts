@@ -42,6 +42,7 @@ import {ListOrdersComponent} from "./backoffice/list-orders/list-orders.componen
 import { CheckoutComponent } from './logged/checkout/checkout.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatBadgeModule} from '@angular/material/badge';
+import { PedidosClienteComponent } from './backoffice-product/pedidos-cliente/pedidos-cliente.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,6 +68,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     ShoppingCarComponent,
     ListOrdersComponent,
     CheckoutComponent,
+    PedidosClienteComponent,
   ],
   imports: [
     BrowserModule,

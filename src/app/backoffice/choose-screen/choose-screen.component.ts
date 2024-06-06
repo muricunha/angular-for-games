@@ -20,6 +20,8 @@ export class ChooseScreenComponent implements OnInit {
     if (dados === null) {
       this.router.navigate(['/login'])
     }
+
+    this.user$;
   }
 
 

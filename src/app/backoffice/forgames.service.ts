@@ -1,6 +1,6 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {Backoffice, ListOrder, ListOrderForm} from './backoffice';
+import {Backoffice, ListOrder, ListOrderForm, StatusPedido} from './backoffice';
 import { Observable, map } from 'rxjs';
 import { ModalAnswer, ModalOptions } from '../models/alert-confirm.model';
 import { ModalAlterComponent } from './list-users/modal-alter/modal-alter.component';
@@ -60,5 +60,10 @@ export class ForgamesService {
 
   public listOrders(listOrdersForm: ListOrderForm): Observable<ListOrder[]> {
     return this.http.post<ListOrder[]>(`${this.API}/pedido/listarPorNome`, listOrdersForm);
+  }
+
+  public getNewOrderList(statusPedido: StatusPedido): Observable<StatusPedido>{
+    const url = `${this.API}/pedido/cancelar`
+    return this.http.patch<StatusPedido>(url, statusPedido)
   }
 }

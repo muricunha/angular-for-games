@@ -17,6 +17,10 @@ export interface LoginView {
   grupo: string;
 }
 
+export interface StatusPedido {
+  statusPedido: string
+}
+
 export interface ListOrder {
   id: number;
   data: string;

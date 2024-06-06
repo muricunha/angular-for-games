@@ -39,8 +39,8 @@ const routes: Routes = [
   {
     path: 'listarUsuarios',
     component: ListUsersComponent,
-    // canActivate: [authGuardsGuard],
-    // data: {grupo: 'ADMIN'}
+    canActivate: [authGuardsGuard],
+    data: {grupo: 'ADMIN'}
   },
   {
     path: 'editarUsuarios',

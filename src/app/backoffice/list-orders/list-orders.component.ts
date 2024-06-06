@@ -3,7 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {MatTableDataSource} from '@angular/material/table';
 import {ForgamesService} from 'src/app/backoffice/forgames.service';
 import {AuthenticationService} from 'src/app/auth/authentication.service';
-import {ListOrder, ListOrderForm} from "../backoffice";
+import {ListOrder, ListOrderForm, StatusPedido} from "../backoffice";
 
 interface Status {
   value: string;
@@ -19,6 +19,7 @@ interface Status {
 
 export class ListOrdersComponent {
   public listOrders: FormGroup
+  public formStatus: FormGroup
 
   constructor(
     private serviceListOrders: ForgamesService,
@@ -56,6 +57,10 @@ export class ListOrdersComponent {
     this.listOrders = new FormGroup({
       nome: new FormControl(''),
     });
+
+    this.formStatus = new FormGroup ({
+      status: new FormControl(this.formStatus.get('status')?.value)
+    })
   }
 
   //Método responsável por criar e enviar a requisição, e recebe uma lista de pedidos
@@ -76,5 +81,17 @@ export class ListOrdersComponent {
         this.dataSourceList.data = [];
       }
     );
+  }
+
+  public addOrderList(): void {
+    const formStatus: StatusPedido = {
+      statusPedido: this.formStatus.get('status')?.value
+    }
+
+    console.log(formStatus);
+
+    this.serviceListOrders.getNewOrderList(formStatus).subscribe((value) => {
+
+    })
   }
 }
